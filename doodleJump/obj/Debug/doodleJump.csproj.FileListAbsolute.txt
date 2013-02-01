@@ -1,0 +1,12 @@
+c:\users\alter\documents\visual studio 2012\Projects\doodleJump\doodleJump\bin\Debug\doodleJump.exe.config
+C:\Users\Alter\Documents\Visual Studio 2012\Projects\doodleJump\doodleJump\bin\Debug\doodleJump.exe
+C:\Users\Alter\Documents\Visual Studio 2012\Projects\doodleJump\doodleJump\bin\Debug\doodleJump.pdb
+C:\Users\Alter\Documents\Visual Studio 2012\Projects\doodleJump\doodleJump\obj\Debug\doodleJump.Properties.Resources.resources
+C:\Users\Alter\Documents\Visual Studio 2012\Projects\doodleJump\doodleJump\obj\Debug\doodleJump.csproj.GenerateResource.Cache
+C:\Users\Alter\Documents\Visual Studio 2012\Projects\doodleJump\doodleJump\obj\Debug\doodleJump.exe
+C:\Users\Alter\Documents\Visual Studio 2012\Projects\doodleJump\doodleJump\obj\Debug\doodleJump.pdb
+C:\Users\Alter\Documents\Visual Studio 2012\Projects\doodleJump\doodleJump\bin\Debug\doodleJump.exe.manifest
+C:\Users\Alter\Documents\Visual Studio 2012\Projects\doodleJump\doodleJump\bin\Debug\doodleJump.application
+C:\Users\Alter\Documents\Visual Studio 2012\Projects\doodleJump\doodleJump\obj\Debug\doodleJump.exe.manifest
+C:\Users\Alter\Documents\Visual Studio 2012\Projects\doodleJump\doodleJump\obj\Debug\doodleJump.application
+C:\Users\Alter\Documents\Visual Studio 2012\Projects\doodleJump\doodleJump\obj\Debug\DoodleJump.GameWindow.resources
