@@ -7,14 +7,14 @@
     <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="doodleJump.exe.manifest" size="3471">
+    <dependentAssembly dependencyType="install" codebase="doodleJump.exe.manifest" size="4820">
       <assemblyIdentity name="doodleJump.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>1Wrg+YUbDwry27nBGKOycNMUCaXXn+vVtQXC8WuuKgo=</dsig:DigestValue>
+        <dsig:DigestValue>tWehqdBp/vLL43PR0g912+PP4alNPgACqw5maF6Hm4U=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

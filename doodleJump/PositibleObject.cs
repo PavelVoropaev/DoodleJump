@@ -1,5 +1,6 @@
 ﻿namespace doodleJump
 {
+    using System.Drawing;
     using System.Windows.Forms;
 
     public abstract class PositibleObject
@@ -15,5 +16,9 @@
         public float PosX { get; set; }
 
         public float PosY { get; set; }
+
+        public Image Image { get; set; }
+
+        public abstract void Draw(Graphics canvas);
     }
 }

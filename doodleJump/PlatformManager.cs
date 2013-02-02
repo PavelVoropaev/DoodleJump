@@ -6,7 +6,9 @@
     using System.Linq;
     using System.Windows.Forms;
 
-    internal class PlatformManager
+    using doodleJump.Properties;
+
+    public class PlatformManager
     {
         private readonly List<Platform> platformList;
 
@@ -19,7 +21,7 @@
             {
                 platformList.Add(new Platform
                                      {
-                                         PosY = 40 * i,
+                                         PosY = 50 * i,
                                          PosX = rnd.Next(10, Form.ActiveForm.Width - 70)
                                      });
             }
@@ -37,7 +39,7 @@
         {
             foreach (var platform in this.platformList.Where(platform =>
                 doodle.AccelerationY < 0 &&
-                Math.Abs(doodle.PosY - doodle.Height - platform.PosY + platform.Height / 2) < platform.Height  &&
+                Math.Abs(doodle.PosY - doodle.Height - platform.PosY + platform.Height / 2) < platform.Height &&
                 doodle.PosX + doodle.Width > platform.PosX &&
                 doodle.PosX < platform.PosX + platform.Width))
             {
@@ -58,25 +60,44 @@
                 if (platform.PosY < 0)
                 {
                     platform.PosY = platform.MonitorHeight;
-                    platform.PosX = rand.Next(0, platform.MonitorWidth);
+                    platform.PosX = rand.Next(10, platform.MonitorWidth - 70);
 
                     if (rand.Next(0, 20) == 6)
                     {
-                        //platform.Image = 
-                        platform.Strange = 14;
+                        platform.Image = platform.Image = Resources.GreenPlatform;
+                        platform.Strange = 25;
+                    }
+                    else if (rand.Next(0, 60) == 12)
+                    {
+                        platform.Image = platform.Image = Resources.RedPlatform;
+                        platform.Strange = 50;
                     }
                     else
                     {
-                        // platform.Image = ;
-                        platform.Strange = 16;
+                        platform.Image = Resources.platform;
+                        platform.Strange = 14;
                     }
                 }
             }
         }
 
-        public void Dispose()
+        /// <summary>
+        /// Убирает планформы с экрана.
+        /// </summary>
+        /// <returns>Убрана ли последняя платформа</returns>
+        public bool HidePlatformsCompleted()
         {
-            platformList.Clear();
+            var disposeCancel = true;
+            foreach (var platform in platformList)
+            {
+                platform.PosY += 10;
+                if (platform.PosY < platform.MonitorHeight)
+                {
+                    disposeCancel = false;
+                }
+            }
+
+            return disposeCancel;
         }
     }
 }

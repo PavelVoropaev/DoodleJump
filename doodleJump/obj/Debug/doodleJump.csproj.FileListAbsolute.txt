@@ -10,3 +10,11 @@ C:\Users\Alter\Documents\Visual Studio 2012\Projects\doodleJump\doodleJump\bin\D
 C:\Users\Alter\Documents\Visual Studio 2012\Projects\doodleJump\doodleJump\obj\Debug\doodleJump.exe.manifest
 C:\Users\Alter\Documents\Visual Studio 2012\Projects\doodleJump\doodleJump\obj\Debug\doodleJump.application
 C:\Users\Alter\Documents\Visual Studio 2012\Projects\doodleJump\doodleJump\obj\Debug\DoodleJump.GameWindow.resources
+C:\Users\Alter\Documents\Visual Studio 2012\Projects\doodleJump\doodleJump\obj\Debug\doodleJump.csprojResolveAssemblyReference.cache
+C:\Users\Alter\Documents\Visual Studio 2012\Projects\doodleJump\doodleJump\bin\Debug\SharpDX.dll
+C:\Users\Alter\Documents\Visual Studio 2012\Projects\doodleJump\doodleJump\bin\Debug\SharpDX.XAudio2.dll
+C:\Users\Alter\Documents\Visual Studio 2012\Projects\doodleJump\doodleJump\bin\Debug\SharpDX.xml
+C:\Users\Alter\Documents\Visual Studio 2012\Projects\doodleJump\doodleJump\bin\Debug\SharpDX.XAudio2.xml
+C:\Users\Alter\Documents\Visual Studio 2012\Projects\doodleJump\doodleJump\bin\Debug\System.dll
+C:\Users\Alter\Documents\Visual Studio 2012\Projects\doodleJump\doodleJump\bin\Debug\System.Drawing.dll
+C:\Users\Alter\Documents\Visual Studio 2012\Projects\doodleJump\doodleJump\bin\Debug\System.Windows.Forms.dll

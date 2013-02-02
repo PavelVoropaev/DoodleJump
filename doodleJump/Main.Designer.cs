@@ -32,7 +32,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameWindow));
             this.MainTimer = new System.Windows.Forms.Timer(this.components);
-            this.resetButton = new System.Windows.Forms.Button();
             this.ScoreDisplay = new System.Windows.Forms.Label();
             this.ScoreLabel = new System.Windows.Forms.Label();
             this.congratulationText = new System.Windows.Forms.Label();
@@ -47,21 +46,6 @@
             // 
             this.MainTimer.Interval = 35;
             this.MainTimer.Tick += new System.EventHandler(this.TimerTick);
-            // 
-            // resetButton
-            // 
-            this.resetButton.BackColor = System.Drawing.Color.Transparent;
-            this.resetButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.resetButton.Font = new System.Drawing.Font("Mistral", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.resetButton.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.resetButton.Location = new System.Drawing.Point(80, 177);
-            this.resetButton.Name = "resetButton";
-            this.resetButton.Size = new System.Drawing.Size(168, 121);
-            this.resetButton.TabIndex = 0;
-            this.resetButton.Text = "Начать с начала";
-            this.resetButton.UseVisualStyleBackColor = false;
-            this.resetButton.Visible = false;
-            this.resetButton.Click += new System.EventHandler(this.ResetButton);
             // 
             // ScoreDisplay
             // 
@@ -156,7 +140,7 @@
             this.SoundCheck.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.SoundCheck.Checked = true;
             this.SoundCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.SoundCheck.Cursor = System.Windows.Forms.Cursors.Default;
+            this.SoundCheck.Cursor = System.Windows.Forms.Cursors.Hand;
             this.SoundCheck.FlatAppearance.BorderSize = 0;
             this.SoundCheck.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.SoundCheck.ForeColor = System.Drawing.Color.Transparent;
@@ -164,7 +148,8 @@
             this.SoundCheck.Margin = new System.Windows.Forms.Padding(0);
             this.SoundCheck.Name = "SoundCheck";
             this.SoundCheck.Size = new System.Drawing.Size(40, 40);
-            this.SoundCheck.TabIndex = 5;
+            this.SoundCheck.TabIndex = 100;
+            this.SoundCheck.TabStop = false;
             this.SoundCheck.UseVisualStyleBackColor = false;
             this.SoundCheck.CheckedChanged += new System.EventHandler(this.SoundCheckCheckedChanged);
             // 
@@ -182,7 +167,6 @@
             this.Controls.Add(this.ScoreLabel);
             this.Controls.Add(this.ScoreDisplay);
             this.Controls.Add(this.NewGameButton);
-            this.Controls.Add(this.resetButton);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.KeyPreview = true;
@@ -202,7 +186,6 @@
         #endregion
 
         private System.Windows.Forms.Timer MainTimer;
-        private System.Windows.Forms.Button resetButton;
         private System.Windows.Forms.Label ScoreDisplay;
         private System.Windows.Forms.Label ScoreLabel;
         private System.Windows.Forms.Label congratulationText;

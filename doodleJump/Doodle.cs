@@ -15,15 +15,16 @@
             PosY = 300;
             PosX = 50;
             AccelerationY = -2;
+            Image = Resources.doodle;
         }
 
         public float AccelerationY { get; set; }
 
         public float AccelerationX { get; set; }
 
-        public void Draw(Graphics canvas)
+        public override void Draw(Graphics canvas)
         {
-            canvas.DrawImage(Resources.doodle, PosX, this.MonitorHeight - PosY, Width, Height);
+            canvas.DrawImage(Image, PosX, this.MonitorHeight - PosY, Width, Height);
         }
 
         public void Jamp(int strange)

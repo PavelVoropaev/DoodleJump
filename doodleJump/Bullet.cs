@@ -4,21 +4,23 @@
 
     using doodleJump.Properties;
 
-    public class Platform : PositibleObject
+    public class Bullet : PositibleObject
     {
-        public Platform()
+        public Bullet()
         {
-            Image = Resources.platform;
-            Strange = 14;
-            Width = 55;
-            Height = 10;
+            Image = Resources.Bullet;
+            Width = 5;
+            Height = 23;
         }
-
-        public int Strange { get; set; }
-
+        
         public override void Draw(Graphics canvas)
         {
             canvas.DrawImage(Image, PosX, MonitorHeight - PosY, Width, Height);
+        }
+
+        public void MooveY()
+        {
+            PosY += 30;
         }
     }
 }

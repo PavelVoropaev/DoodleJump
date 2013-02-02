@@ -17,13 +17,21 @@
 
         private PlatformManager platformManager;
 
+        private BulletManager bulletManager;
+
+        private SoundManager soundManager;
+
         private int mouseX;
 
         private int score;
 
+        private int time;
+
         private bool pressedGoToRight;
 
         private bool pressedGoToLeft;
+
+        private bool pressedFire;
 
         public GameWindow()
         {
@@ -35,28 +43,20 @@
             NewGame();
         }
 
-        private void ResetButton(object sender, EventArgs e)
-        {
-            NewGame();
-        }
-
         private void GameWindowPaint(object sender, PaintEventArgs e)
         {
             if (MainTimer.Enabled)
             {
                 canvas = e.Graphics;
                 myDoodle.Draw(canvas);
-                int strenge;
                 platformManager.DrawPlatforms(canvas);
+                bulletManager.DrawBullets(canvas);
+
+                int strenge;
                 if (platformManager.StendToPlatfotm(myDoodle, out strenge))
                 {
-                    if (SoundCheck.Checked)
-                    {
-                        var soundPlayer = new System.Media.SoundPlayer(Resources.step);
-                        soundPlayer.Play();
-                    }
-
                     myDoodle.Jamp(strenge);
+                    soundManager.JumpSound();
                 }
             }
         }
@@ -64,6 +64,7 @@
         private void TimerTick(object sender, EventArgs e)
         {
             ScoreDisplay.Text = score.ToString();
+            time++;
 
             // Движение по оси X
             if (MouseControl.Checked)
@@ -82,10 +83,19 @@
                     myDoodle.AccelerationX = Speed;
                 }
 
+                if (pressedFire && time % 3 == 0)
+                {
+
+                    bulletManager.Fire(myDoodle);
+                    soundManager.FireSound();
+                }
+
                 myDoodle.KeyMooveX();
             }
 
             // Движение по оси Y
+            bulletManager.MooveY();
+
             if (myDoodle.PosY > myDoodle.MonitorHeight / 1.5 && myDoodle.AccelerationY > 0)
             {
                 platformManager.MooveY(myDoodle.AccelerationY);
@@ -134,6 +144,11 @@
                 {
                     pressedGoToRight = isPress;
                 }
+                else if (keyData == Keys.W
+                   || keyData == Keys.Up)
+                {
+                    pressedFire = isPress;
+                }
             }
         }
 
@@ -141,8 +156,9 @@
         {
             score = 0;
             platformManager = new PlatformManager();
+            bulletManager = new BulletManager();
             myDoodle = new Doodle();
-            resetButton.Visible = false;
+            soundManager = new SoundManager();
             NewGameButton.Visible = false;
             Record.Visible = false;
             congratulationText.Visible = false;
@@ -151,30 +167,40 @@
             MainTimer.Start();
         }
 
+        private bool isAlreadyPlays;
+
         private void GameOver()
         {
-            platformManager.Dispose();
-
-            congratulationText.Text = "Счёт:" + score.ToString() + "\n Предыдущий рекорд:"
-                                               + Settings.Default.BestScore;
-            resetButton.Visible = true;
-            congratulationText.Visible = true;
-            MouseControl.Visible = true;
-            KeyControl.Visible = true;
-            if (score > Settings.Default.BestScore)
+            if (!isAlreadyPlays)
             {
-                congratulationText.Text = "\n Новый рекорд!" + score + "\n Предыдущий рекорд:"
-                                               + Settings.Default.BestScore;
-                Settings.Default.BestScore = score;
-                Settings.Default.Save();
+                soundManager.GameOwerSound();
+                isAlreadyPlays = true;
             }
-
-            MainTimer.Stop();
+            if (platformManager.HidePlatformsCompleted())
+            {
+                isAlreadyPlays = false;
+                congratulationText.Text = "Счёт:" + score.ToString() + "\n Предыдущий рекорд:"
+                                          + Settings.Default.BestScore;
+                NewGameButton.Visible = true;
+                NewGameButton.Text = "Начать с начала";
+                congratulationText.Visible = true;
+                MouseControl.Visible = true;
+                KeyControl.Visible = true;
+                if (score > Settings.Default.BestScore)
+                {
+                    congratulationText.Text = "\n Новый рекорд!" + score + "\n Предыдущий рекорд:"
+                                              + Settings.Default.BestScore;
+                    Settings.Default.BestScore = score;
+                    Settings.Default.Save();
+                }
+                MainTimer.Stop();
+            }
         }
 
         private void SoundCheckCheckedChanged(object sender, EventArgs e)
         {
             SoundCheck.BackgroundImage = SoundCheck.Checked ? Resources.musicOn : Resources.musicOff;
+            soundManager.SoundOn = !soundManager.SoundOn;
         }
     }
 }

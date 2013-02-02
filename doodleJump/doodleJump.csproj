@@ -61,12 +61,34 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
+    <Reference Include="SharpDX">
+      <HintPath>..\packages\SharpDX.2.4.2\lib\net40\SharpDX.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="SharpDX.XAudio2">
+      <HintPath>..\packages\SharpDX.XAudio2.2.4.2\lib\net40\SharpDX.XAudio2.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bullet.cs" />
+    <Compile Include="BulletManager.cs" />
     <Compile Include="Doodle.cs" />
     <Compile Include="GameManager.cs" />
     <Compile Include="Main.cs">
@@ -85,7 +107,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Settings.cs" />
+    <Compile Include="SoundManager.cs" />
+    <Compile Include="SoundWaveManager.cs" />
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -123,6 +146,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -158,6 +182,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\music_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GameOwer.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GreenPlatform.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RedPlatform.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bullet.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gun2.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

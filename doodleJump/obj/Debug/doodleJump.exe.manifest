@@ -42,14 +42,38 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="doodleJump.exe" size="132096">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="doodleJump.exe" size="320000">
       <assemblyIdentity name="doodleJump" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>hA2JyzbFfssuWyfUgw2LyQUZE6mj4drjeP52zMZ+AxI=</dsig:DigestValue>
+        <dsig:DigestValue>EEHHw6YnX+qeEbgCsoyiwNOnnSo9G0tpVtmHMQx/i0w=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SharpDX.dll" size="513536">
+      <assemblyIdentity name="SharpDX" version="2.4.2.0" publicKeyToken="627A3D6D1956F55A" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>IAfiP2NkLSmEfZMgIQ/kS/U0woaHtssks7cI0nbh5Dc=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SharpDX.XAudio2.dll" size="78336">
+      <assemblyIdentity name="SharpDX.XAudio2" version="2.4.2.0" publicKeyToken="627A3D6D1956F55A" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>EPYSlSG0pPjax/FBiLB0VG3xgrHTG7wQ7lUXq7s1jfM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
