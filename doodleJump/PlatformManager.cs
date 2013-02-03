@@ -17,7 +17,7 @@
             var rnd = new Random();
             platformList = new List<Platform>();
 
-            for (int i = 0; i < 13; i++)
+            for (var i = 1; i < 11; i++)
             {
                 platformList.Add(new Platform
                                      {
@@ -55,10 +55,10 @@
         {
             foreach (var platform in platformList)
             {
-                var rand = new Random();
                 platform.PosY -= speed;
                 if (platform.PosY < 0)
                 {
+                    var rand = new Random((int)platform.PosX);
                     platform.PosY = platform.MonitorHeight;
                     platform.PosX = rand.Next(10, platform.MonitorWidth - 70);
 

@@ -19,6 +19,8 @@
 
         private BulletManager bulletManager;
 
+        private EnemyManager enemyManager;
+
         private SoundManager soundManager;
 
         private int mouseX;
@@ -51,7 +53,7 @@
                 myDoodle.Draw(canvas);
                 platformManager.DrawPlatforms(canvas);
                 bulletManager.DrawBullets(canvas);
-
+                enemyManager.DrawEnemy(canvas);
                 int strenge;
                 if (platformManager.StendToPlatfotm(myDoodle, out strenge))
                 {
@@ -65,6 +67,12 @@
         {
             ScoreDisplay.Text = score.ToString();
             time++;
+            enemyManager.KillShot(bulletManager);
+            enemyManager.KillDoodle(myDoodle);
+            if (time % 15 == 0)
+            {
+                enemyManager.Add(time);
+            }
 
             // Движение по оси X
             if (MouseControl.Checked)
@@ -85,7 +93,6 @@
 
                 if (pressedFire && time % 3 == 0)
                 {
-
                     bulletManager.Fire(myDoodle);
                     soundManager.FireSound();
                 }
@@ -95,8 +102,9 @@
 
             // Движение по оси Y
             bulletManager.MooveY();
+            enemyManager.MooveY();
 
-            if (myDoodle.PosY > myDoodle.MonitorHeight / 1.5 && myDoodle.AccelerationY > 0)
+            if (myDoodle.PosY > myDoodle.MonitorHeight / 2 && myDoodle.AccelerationY > 0)
             {
                 platformManager.MooveY(myDoodle.AccelerationY);
                 myDoodle.AccelerationY--;
@@ -145,7 +153,8 @@
                     pressedGoToRight = isPress;
                 }
                 else if (keyData == Keys.W
-                   || keyData == Keys.Up)
+                   || keyData == Keys.Up ||
+                    keyData == Keys.Space)
                 {
                     pressedFire = isPress;
                 }
@@ -159,6 +168,7 @@
             bulletManager = new BulletManager();
             myDoodle = new Doodle();
             soundManager = new SoundManager();
+            enemyManager = new EnemyManager();
             NewGameButton.Visible = false;
             Record.Visible = false;
             congratulationText.Visible = false;
@@ -176,23 +186,25 @@
                 soundManager.GameOwerSound();
                 isAlreadyPlays = true;
             }
+            enemyManager.HideEnemy();
             if (platformManager.HidePlatformsCompleted())
             {
                 isAlreadyPlays = false;
-                congratulationText.Text = "Счёт:" + score.ToString() + "\n Предыдущий рекорд:"
-                                          + Settings.Default.BestScore;
-                NewGameButton.Visible = true;
+                congratulationText.Text = "Счёт:" + score +
+                                "\n Предыдущий рекорд:" + Settings.Default.BestScore;
                 NewGameButton.Text = "Начать с начала";
+                NewGameButton.Visible = true;
                 congratulationText.Visible = true;
                 MouseControl.Visible = true;
                 KeyControl.Visible = true;
                 if (score > Settings.Default.BestScore)
                 {
-                    congratulationText.Text = "\n Новый рекорд!" + score + "\n Предыдущий рекорд:"
-                                              + Settings.Default.BestScore;
+                    congratulationText.Text = "\n Новый рекорд!" + score +
+                               "\n Предыдущий рекорд:" + Settings.Default.BestScore;
                     Settings.Default.BestScore = score;
                     Settings.Default.Save();
                 }
+
                 MainTimer.Stop();
             }
         }

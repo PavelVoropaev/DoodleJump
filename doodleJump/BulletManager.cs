@@ -3,17 +3,16 @@
     using System.Collections.Generic;
     using System.Drawing;
 
-    using doodleJump.Properties;
-
     public class BulletManager
     {
-        private const int BulletSpeed = 15;
 
-        private readonly List<Bullet> bulletList = new List<Bullet>();
+        public readonly List<Bullet> BulletList = new List<Bullet>();
+
+        private const int BulletSpeed = 15;
 
         public void Fire(Doodle doodle)
         {
-            bulletList.Add(new Bullet
+            this.BulletList.Add(new Bullet
                                {
                                    PosX = doodle.PosX + doodle.Width / 2,
                                    PosY = doodle.PosY,
@@ -22,7 +21,7 @@
 
         public void DrawBullets(Graphics canvas)
         {
-            foreach (var platform in bulletList)
+            foreach (var platform in this.BulletList)
             {
                 platform.Draw(canvas);
             }
@@ -32,12 +31,12 @@
         {
             try
             {
-                foreach (var platform in bulletList)
+                foreach (var platform in this.BulletList)
                 {
                     platform.PosY += BulletSpeed;
                     if (platform.PosY > platform.MonitorHeight + 50)
                     {
-                        bulletList.Remove(platform);
+                        this.BulletList.Remove(platform);
                     }
                 }
             }
