@@ -4,7 +4,6 @@
     using System.Collections.Generic;
     using System.Drawing;
     using System.Linq;
-    using System.Windows.Forms;
 
     using doodleJump.Properties;
 
@@ -22,7 +21,7 @@
                 platformList.Add(new Platform
                                      {
                                          PosY = 50 * i,
-                                         PosX = rnd.Next(10, Form.ActiveForm.Width - 70)
+                                         PosX = rnd.Next(10, Properties.Settings.Default.MonitorWigth - 70)
                                      });
             }
         }

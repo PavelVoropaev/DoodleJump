@@ -45,7 +45,7 @@
                                             doodle.PosX + doodle.Width > enemy.PosX &&
                                             doodle.PosX < enemy.PosX + enemy.Width))
             {
-                doodle.PosY = 0;
+                doodle.PosY = -300;
                 return true;
             }
 

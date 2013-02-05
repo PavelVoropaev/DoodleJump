@@ -34,5 +34,29 @@ namespace doodleJump.Properties {
                 this["BestScore"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("350")]
+        public int MonitorWigth {
+            get {
+                return ((int)(this["MonitorWigth"]));
+            }
+            set {
+                this["MonitorWigth"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("500")]
+        public int MonitorHeight {
+            get {
+                return ((int)(this["MonitorHeight"]));
+            }
+            set {
+                this["MonitorHeight"] = value;
+            }
+        }
     }
 }

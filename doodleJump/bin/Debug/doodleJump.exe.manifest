@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="doodleJump.exe" size="329728">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="doodleJump.exe" size="330240">
       <assemblyIdentity name="doodleJump" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Gmc1lD1h98JZhkDJOZ8ShP4F4nY7D2F9vDIacOUTZ8g=</dsig:DigestValue>
+        <dsig:DigestValue>JkWE8wV+xW3kVDXD3/wsqmrq0dKqYkMS62lCpq64PCQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -77,13 +77,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="doodleJump.exe.config" size="922">
+  <file name="doodleJump.exe.config" size="1171">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>ycQ7OUtZySrFWmcnoElCm5XyFJ5a4LhB1T7s+nbtAF4=</dsig:DigestValue>
+      <dsig:DigestValue>CZJmInCECbTujc3KvWT9mAm8n6CqnU2RHnqTP5rWoXM=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

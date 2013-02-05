@@ -1,13 +1,12 @@
 ﻿namespace doodleJump
 {
     using System.Drawing;
-    using System.Windows.Forms;
 
     public abstract class PositibleObject
     {
-        public readonly int MonitorHeight = Form.ActiveForm.Height;
+        public readonly int MonitorHeight = Properties.Settings.Default.MonitorHeight;
 
-        public readonly int MonitorWidth = Form.ActiveForm.Width;
+        public readonly int MonitorWidth = Properties.Settings.Default.MonitorWigth;
 
         public int Width { get; protected set; }
         
