@@ -6,9 +6,9 @@
     {
         private readonly WaveManager waveManager = new WaveManager();
 
-        public SoundManager()
+        public SoundManager(bool soundOn)
         {
-            SoundOn = true;
+            SoundOn = soundOn;
             waveManager.LoadWave(Resources.fire, "Fire");
             waveManager.LoadWave(Resources.step, "Step");
             waveManager.LoadWave(Resources.GameOwer, "GameOwer");

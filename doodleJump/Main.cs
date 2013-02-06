@@ -38,6 +38,7 @@
         public GameWindow()
         {
             InitializeComponent();
+            soundManager = new SoundManager(SoundCheck.Checked);
         }
 
         private void NewGameButtonClick(object sender, EventArgs e)
@@ -167,7 +168,6 @@
             platformManager = new PlatformManager();
             bulletManager = new BulletManager();
             myDoodle = new Doodle();
-            soundManager = new SoundManager();
             enemyManager = new EnemyManager();
             NewGameButton.Visible = false;
             Record.Visible = false;

@@ -91,7 +91,6 @@
     <Compile Include="BulletManager.cs" />
     <Compile Include="Doodle.cs" />
     <Compile Include="EnemyManager.cs" />
-    <Compile Include="GameManager.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
