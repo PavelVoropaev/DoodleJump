@@ -37,9 +37,9 @@
             this.congratulationText = new System.Windows.Forms.Label();
             this.NewGameButton = new System.Windows.Forms.Button();
             this.Record = new System.Windows.Forms.Label();
+            this.SoundCheck = new System.Windows.Forms.CheckBox();
             this.MouseControl = new System.Windows.Forms.RadioButton();
             this.KeyControl = new System.Windows.Forms.RadioButton();
-            this.SoundCheck = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // MainTimer
@@ -106,6 +106,28 @@
             this.Record.Text = "Текущий рекорд: 0";
             this.Record.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // SoundCheck
+            // 
+            this.SoundCheck.AccessibleRole = System.Windows.Forms.AccessibleRole.Alert;
+            this.SoundCheck.Appearance = System.Windows.Forms.Appearance.Button;
+            this.SoundCheck.BackColor = System.Drawing.Color.Transparent;
+            this.SoundCheck.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SoundCheck.BackgroundImage")));
+            this.SoundCheck.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.SoundCheck.Checked = true;
+            this.SoundCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.SoundCheck.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SoundCheck.FlatAppearance.BorderSize = 0;
+            this.SoundCheck.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.SoundCheck.ForeColor = System.Drawing.Color.Transparent;
+            this.SoundCheck.Location = new System.Drawing.Point(1, 419);
+            this.SoundCheck.Margin = new System.Windows.Forms.Padding(0);
+            this.SoundCheck.Name = "SoundCheck";
+            this.SoundCheck.Size = new System.Drawing.Size(40, 40);
+            this.SoundCheck.TabIndex = 100;
+            this.SoundCheck.TabStop = false;
+            this.SoundCheck.UseVisualStyleBackColor = false;
+            this.SoundCheck.CheckedChanged += new System.EventHandler(this.SoundCheckChangedEvent);
+            // 
             // MouseControl
             // 
             this.MouseControl.AutoSize = true;
@@ -132,27 +154,6 @@
             this.KeyControl.Text = "Клава";
             this.KeyControl.UseVisualStyleBackColor = false;
             // 
-            // SoundCheck
-            // 
-            this.SoundCheck.Appearance = System.Windows.Forms.Appearance.Button;
-            this.SoundCheck.BackColor = System.Drawing.Color.Transparent;
-            this.SoundCheck.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SoundCheck.BackgroundImage")));
-            this.SoundCheck.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.SoundCheck.Checked = true;
-            this.SoundCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.SoundCheck.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SoundCheck.FlatAppearance.BorderSize = 0;
-            this.SoundCheck.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.SoundCheck.ForeColor = System.Drawing.Color.Transparent;
-            this.SoundCheck.Location = new System.Drawing.Point(1, 419);
-            this.SoundCheck.Margin = new System.Windows.Forms.Padding(0);
-            this.SoundCheck.Name = "SoundCheck";
-            this.SoundCheck.Size = new System.Drawing.Size(40, 40);
-            this.SoundCheck.TabIndex = 100;
-            this.SoundCheck.TabStop = false;
-            this.SoundCheck.UseVisualStyleBackColor = false;
-            this.SoundCheck.CheckedChanged += new System.EventHandler(this.SoundCheckCheckedChanged);
-            // 
             // GameWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -175,9 +176,11 @@
             this.Name = "GameWindow";
             this.Text = "Space Jump";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.GameWindowPaint);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainKeyDown);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownEvent);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.MainKeyUp);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainMouseMove);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MouseDownEvent);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseMoveEvent);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MouseUpEvent);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -191,9 +194,9 @@
         private System.Windows.Forms.Label congratulationText;
         private System.Windows.Forms.Button NewGameButton;
         private System.Windows.Forms.Label Record;
+        private System.Windows.Forms.CheckBox SoundCheck;
         private System.Windows.Forms.RadioButton MouseControl;
         private System.Windows.Forms.RadioButton KeyControl;
-        private System.Windows.Forms.CheckBox SoundCheck;
     }
 }
 

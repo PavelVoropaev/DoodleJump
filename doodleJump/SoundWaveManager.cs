@@ -15,7 +15,7 @@
         {
             xAudio = new XAudio2();
             var mastering = new MasteringVoice(xAudio);
-            mastering.SetVolume(1);
+            mastering.SetVolume(0.1F);
             xAudio.StartEngine();
         }
 

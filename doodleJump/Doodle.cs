@@ -6,15 +6,13 @@
 
     public class Doodle : PositibleObject
     {
-        private const int SpeedX = 10;
-
         public Doodle()
         {
             Width = 50;
             Height = 90;
             PosY = 300;
             PosX = 50;
-            AccelerationY = -2;
+            this.AccelerationY = -2;
             Image = Resources.doodle;
         }
 
@@ -27,6 +25,10 @@
             canvas.DrawImage(Image, PosX, this.MonitorHeight - PosY, Width, Height);
         }
 
+        /// <summary>
+        /// Прыжок
+        /// </summary>
+        /// <param name="strange">Сила прыжка</param>
         public void Jamp(int strange)
         {
             this.AccelerationY = strange;
@@ -34,27 +36,15 @@
 
         public void MooveY()
         {
-            PosY += AccelerationY;
-            AccelerationY--;
+            PosY += this.AccelerationY;
         }
 
-        public void MouseMooveX(float mouseX)
+        public void KeyMooveX(int speed)
         {
-            if (PosX + Width / 3 > mouseX)
-            {
-                PosX -= SpeedX;
-            }
-            else if (PosX + 2 * Width / 3 < mouseX)
-            {
-                PosX += SpeedX;
-            }
-        }
-
-        public void KeyMooveX()
-        {
-            PosX += AccelerationX;
-            AccelerationX = AccelerationX / 8 * 5;
-            if (PosX > MonitorWidth)
+            this.AccelerationX = speed;
+            PosX += this.AccelerationX;
+            this.AccelerationX = this.AccelerationX / 8 * 5;
+            if (PosX + Width > MonitorWidth)
             {
                 PosX = 0;
             }

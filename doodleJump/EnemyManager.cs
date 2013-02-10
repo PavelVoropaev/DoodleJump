@@ -20,24 +20,34 @@
             }
         }
 
-        public bool KillShot(BulletManager bulletManager)
+        /// <summary>
+        /// Просчитывает попадания пуль в противника
+        /// </summary>
+        /// <param name="bulletList">Все пули</param>
+        /// <returns>Были ли попадания?</returns>
+        public bool KillEnemy(List<Bullet> bulletList)
         {
-            foreach (var bullet in bulletManager.BulletList)
+            foreach (var bullet in bulletList)
             {
-                 foreach (var enemy in this.enemyList.Where(enemy =>
-                Math.Abs(bullet.PosY - bullet.Height - enemy.PosY + enemy.Height / 2) < enemy.Height &&
-                bullet.PosX + bullet.Width > enemy.PosX &&
-                bullet.PosX < enemy.PosX + enemy.Width))
-            {
-                enemyList.Remove(enemy);
-                bulletManager.BulletList.Remove(bullet);
-                return true;
+                foreach (var enemy in this.enemyList.Where(enemy =>
+               Math.Abs(bullet.PosY - bullet.Height - enemy.PosY + enemy.Height / 2) < enemy.Height &&
+                        bullet.PosX + bullet.Width > enemy.PosX &&
+                        bullet.PosX < enemy.PosX + enemy.Width))
+                {
+                    enemyList.Remove(enemy);
+                    bulletList.Remove(bullet);
+                    return true;
+                }
             }
-            }
-           
+
             return false;
         }
 
+        /// <summary>
+        /// Были ли попадания в Дудла 
+        /// </summary>
+        /// <param name="doodle">Дудл</param>
+        /// <returns>Были ли попадания в Дудла?</returns>
         public bool KillDoodle(Doodle doodle)
         {
             if (this.enemyList.Any(enemy => doodle.PosY - doodle.Height < enemy.PosY &&
@@ -46,6 +56,7 @@
                                             doodle.PosX < enemy.PosX + enemy.Width))
             {
                 doodle.PosY = -300;
+                doodle.PosX = -300;
                 return true;
             }
 
@@ -70,8 +81,8 @@
         {
             enemyList.Add(new Enemy
                               {
-                                         PosY = 700,
-                                         PosX = rnd.Next(10, 400)
+                                  PosY = 700,
+                                  PosX = rnd.Next(10, 400)
                               });
         }
 

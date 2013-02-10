@@ -11,6 +11,10 @@
     /// </summary>
     public partial class GameWindow : Form
     {
+        private const int DefaultDoodleSpeedX = 10;
+
+        private readonly SoundManager soundManager;
+
         private Doodle myDoodle;
 
         private Graphics canvas;
@@ -20,8 +24,6 @@
         private BulletManager bulletManager;
 
         private EnemyManager enemyManager;
-
-        private SoundManager soundManager;
 
         private int mouseX;
 
@@ -55,60 +57,51 @@
                 platformManager.DrawPlatforms(canvas);
                 bulletManager.DrawBullets(canvas);
                 enemyManager.DrawEnemy(canvas);
-                int strenge;
-                if (platformManager.StendToPlatfotm(myDoodle, out strenge))
-                {
-                    myDoodle.Jamp(strenge);
-                    soundManager.JumpSound();
-                }
             }
         }
 
         private void TimerTick(object sender, EventArgs e)
         {
-            ScoreDisplay.Text = score.ToString();
             time++;
-            enemyManager.KillShot(bulletManager);
-            enemyManager.KillDoodle(myDoodle);
-            if (time % 15 == 0)
+            ScoreDisplay.Text = score.ToString();
+
+            if (pressedFire && time % 4 == 0)
             {
-                enemyManager.Add(time);
+                bulletManager.Fire(myDoodle);
+                soundManager.FireSound();
             }
 
-            // Движение по оси X
+            enemyManager.KillEnemy(bulletManager.BulletList);
+            enemyManager.KillDoodle(myDoodle);
+
+            int strenge;
+            if (platformManager.StendToPlatfotm(myDoodle, out strenge))
+            {
+                myDoodle.Jamp(strenge);
+                soundManager.JumpSound();
+            }
+            
             if (MouseControl.Checked)
             {
-                myDoodle.MouseMooveX(mouseX);
+                RefreshMousePosition(mouseX);
             }
-            else if (KeyControl.Checked)
+
+            if (pressedGoToLeft)
             {
-                const int Speed = 10;
-                if (pressedGoToLeft)
-                {
-                    myDoodle.AccelerationX = -Speed;
-                }
-                else if (pressedGoToRight)
-                {
-                    myDoodle.AccelerationX = Speed;
-                }
-
-                if (pressedFire && time % 3 == 0)
-                {
-                    bulletManager.Fire(myDoodle);
-                    soundManager.FireSound();
-                }
-
-                myDoodle.KeyMooveX();
+                myDoodle.KeyMooveX(-DefaultDoodleSpeedX);
+            }
+            else if (pressedGoToRight)
+            {
+                myDoodle.KeyMooveX(DefaultDoodleSpeedX);
             }
 
-            // Движение по оси Y
             bulletManager.MooveY();
             enemyManager.MooveY();
 
+            myDoodle.AccelerationY--;
             if (myDoodle.PosY > myDoodle.MonitorHeight / 2 && myDoodle.AccelerationY > 0)
             {
                 platformManager.MooveY(myDoodle.AccelerationY);
-                myDoodle.AccelerationY--;
                 score++;
             }
             else
@@ -121,15 +114,52 @@
                 GameOver();
             }
 
+            if (time % 25 == 0)
+            {
+                enemyManager.Add(time);
+            }
+
             Invalidate();
         }
 
-        private void MainMouseMove(object sender, MouseEventArgs e)
+        private void MouseMoveEvent(object sender, MouseEventArgs e)
         {
             mouseX = e.X;
         }
 
-        private void MainKeyDown(object sender, KeyEventArgs e)
+        private void MouseDownEvent(object sender, MouseEventArgs e)
+        {
+            pressedFire = true;
+        }
+
+        private void MouseUpEvent(object sender, MouseEventArgs e)
+        {
+            pressedFire = false;
+        }
+
+        private void RefreshMousePosition(int mousePosX)
+        {
+            if (MouseControl.Checked && MainTimer.Enabled)
+            {
+                if (myDoodle.PosX + myDoodle.Width / 4 > mousePosX)
+                {
+                    pressedGoToLeft = true;
+                    pressedGoToRight = false;
+                }
+                else if (myDoodle.PosX + 3 * myDoodle.Width / 4 < mousePosX)
+                {
+                    pressedGoToLeft = false;
+                    pressedGoToRight = true;
+                }
+                else
+                {
+                    pressedGoToLeft = false;
+                    pressedGoToRight = false;
+                }
+            }
+        }
+
+        private void KeyDownEvent(object sender, KeyEventArgs e)
         {
             RefreshKeyBoard(e.KeyData, true);
         }
@@ -162,12 +192,18 @@
             }
         }
 
+        private void SoundCheckChangedEvent(object sender, EventArgs e)
+        {
+            SoundCheck.BackgroundImage = SoundCheck.Checked ? Resources.musicOn : Resources.musicOff;
+            soundManager.SoundOn = !soundManager.SoundOn;
+        }
+
         private void NewGame()
         {
             score = 0;
+            myDoodle = new Doodle();
             platformManager = new PlatformManager();
             bulletManager = new BulletManager();
-            myDoodle = new Doodle();
             enemyManager = new EnemyManager();
             NewGameButton.Visible = false;
             Record.Visible = false;
@@ -177,19 +213,20 @@
             MainTimer.Start();
         }
 
-        private bool isAlreadyPlays;
+        private bool gameOverMusicPlaying;
 
         private void GameOver()
         {
-            if (!isAlreadyPlays)
+            if (!this.gameOverMusicPlaying)
             {
                 soundManager.GameOwerSound();
-                isAlreadyPlays = true;
+                this.gameOverMusicPlaying = true;
             }
+
             enemyManager.HideEnemy();
             if (platformManager.HidePlatformsCompleted())
             {
-                isAlreadyPlays = false;
+                this.gameOverMusicPlaying = false;
                 congratulationText.Text = "Счёт:" + score +
                                 "\n Предыдущий рекорд:" + Settings.Default.BestScore;
                 NewGameButton.Text = "Начать с начала";
@@ -207,12 +244,6 @@
 
                 MainTimer.Stop();
             }
-        }
-
-        private void SoundCheckCheckedChanged(object sender, EventArgs e)
-        {
-            SoundCheck.BackgroundImage = SoundCheck.Checked ? Resources.musicOn : Resources.musicOff;
-            soundManager.SoundOn = !soundManager.SoundOn;
         }
     }
 }

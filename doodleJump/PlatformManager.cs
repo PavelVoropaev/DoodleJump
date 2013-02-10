@@ -34,6 +34,12 @@
             }
         }
 
+        /// <summary>
+        /// Стоит ли дудл на платформе?
+        /// </summary>
+        /// <param name="doodle">Дудл</param>
+        /// <param name="strenge">Сила толчка платформы </param>
+        /// <returns>Стоит ли дудл на платформе?</returns>
         public bool StendToPlatfotm(Doodle doodle, out int strenge)
         {
             foreach (var platform in this.platformList.Where(platform =>
