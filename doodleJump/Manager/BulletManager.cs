@@ -1,7 +1,10 @@
-﻿namespace doodleJump
+﻿namespace doodleJump.Manager
 {
+    using System;
     using System.Collections.Generic;
     using System.Drawing;
+
+    using doodleJump.Entity;
 
     public class BulletManager
     {
@@ -31,17 +34,18 @@
         {
             try
             {
-                foreach (var platform in this.BulletList)
+                foreach (var bullet in this.BulletList)
                 {
-                    platform.PosY += BulletSpeed;
-                    if (platform.PosY > platform.MonitorHeight + 50)
+                    bullet.PosY += BulletSpeed;
+                    if (bullet.PosY > bullet.MonitorHeight + 50)
                     {
-                        this.BulletList.Remove(platform);
+                        this.BulletList.Remove(bullet);
                     }
                 }
             }
-            catch
+            catch (InvalidOperationException)
             {
+                // В другом потоке был удалён объект из листа, так что падаем сюда каждый раз когда убираем пулю с экрана.
             }
         }
     }

@@ -1,4 +1,4 @@
-﻿namespace doodleJump
+﻿namespace doodleJump.Entity
 {
     using System.Drawing;
 
@@ -8,19 +8,19 @@
     {
         public Bullet()
         {
-            Image = Resources.Bullet;
-            Width = 5;
-            Height = 23;
+            this.Image = Resources.Bullet;
+            this.Width = 5;
+            this.Height = 23;
         }
         
         public override void Draw(Graphics canvas)
         {
-            canvas.DrawImage(Image, PosX, MonitorHeight - PosY, Width, Height);
+            canvas.DrawImage(this.Image, this.PosX, this.MonitorHeight - this.PosY, this.Width, this.Height);
         }
 
         public void MooveY()
         {
-            PosY += 30;
+            this.PosY += 30;
         }
     }
 }

@@ -1,8 +1,9 @@
-﻿namespace doodleJump
+﻿namespace doodleJump.Manager
 {
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+
     using SharpDX.Multimedia;
     using SharpDX.XAudio2;
 
@@ -13,24 +14,24 @@
 
         public WaveManager()
         {
-            xAudio = new XAudio2();
-            var mastering = new MasteringVoice(xAudio);
+            this.xAudio = new XAudio2();
+            var mastering = new MasteringVoice(this.xAudio);
             mastering.SetVolume(0.1F);
-            xAudio.StartEngine();
+            this.xAudio.StartEngine();
         }
 
         public void LoadWave(Stream stream, string key)
         {
             var buffer = GetBuffer(stream);
-            waves.Add(new Wave { Buffer = buffer, Key = key });
+            this.waves.Add(new Wave { Buffer = buffer, Key = key });
         }
 
         public void PlayWave(string key)
         {
-            var wave = waves.FirstOrDefault(x => x.Key == key);
+            var wave = this.waves.FirstOrDefault(x => x.Key == key);
             if (wave != null)
             {
-                var voice = new SourceVoice(xAudio, wave.Buffer.WaveFormat, true);
+                var voice = new SourceVoice(this.xAudio, wave.Buffer.WaveFormat, true);
                 voice.SubmitSourceBuffer(wave.Buffer, wave.Buffer.DecodedPacketsInfo);
                 voice.Start();
             }

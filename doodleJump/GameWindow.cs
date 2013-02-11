@@ -4,6 +4,8 @@
     using System.Drawing;
     using System.Windows.Forms;
 
+    using doodleJump.Entity;
+    using doodleJump.Manager;
     using doodleJump.Properties;
 
     /// <summary>
@@ -88,11 +90,11 @@
 
             if (pressedGoToLeft)
             {
-                myDoodle.KeyMooveX(-DefaultDoodleSpeedX);
+                myDoodle.MooveX(-DefaultDoodleSpeedX);
             }
             else if (pressedGoToRight)
             {
-                myDoodle.KeyMooveX(DefaultDoodleSpeedX);
+                myDoodle.MooveX(DefaultDoodleSpeedX);
             }
 
             bulletManager.MooveY();
@@ -101,7 +103,8 @@
             myDoodle.AccelerationY--;
             if (myDoodle.PosY > myDoodle.MonitorHeight / 2 && myDoodle.AccelerationY > 0)
             {
-                platformManager.MooveY(myDoodle.AccelerationY);
+                platformManager.WindowMooveY(myDoodle.AccelerationY);
+                enemyManager.WindowMooveY(myDoodle.AccelerationY);
                 score++;
             }
             else

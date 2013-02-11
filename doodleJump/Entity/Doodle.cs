@@ -1,4 +1,4 @@
-ï»¿namespace doodleJump
+namespace doodleJump.Entity
 {
     using System.Drawing;
 
@@ -8,12 +8,12 @@
     {
         public Doodle()
         {
-            Width = 50;
-            Height = 90;
-            PosY = 300;
-            PosX = 50;
+            this.Width = 50;
+            this.Height = 90;
+            this.PosY = 300;
+            this.PosX = 50;
             this.AccelerationY = -2;
-            Image = Resources.doodle;
+            this.Image = Resources.doodle;
         }
 
         public float AccelerationY { get; set; }
@@ -22,13 +22,13 @@
 
         public override void Draw(Graphics canvas)
         {
-            canvas.DrawImage(Image, PosX, this.MonitorHeight - PosY, Width, Height);
+            canvas.DrawImage(this.Image, this.PosX, this.MonitorHeight - this.PosY, this.Width, this.Height);
         }
 
         /// <summary>
-        /// ÐŸÑ€Ñ‹Ð¶Ð¾Ðº
+        /// Ïðûæîê
         /// </summary>
-        /// <param name="strange">Ð¡Ð¸Ð»Ð° Ð¿Ñ€Ñ‹Ð¶ÐºÐ°</param>
+        /// <param name="strange">Ñèëà ïðûæêà</param>
         public void Jamp(int strange)
         {
             this.AccelerationY = strange;
@@ -36,21 +36,21 @@
 
         public void MooveY()
         {
-            PosY += this.AccelerationY;
+            this.PosY += this.AccelerationY;
         }
 
-        public void KeyMooveX(int speed)
+        public void MooveX(int speed)
         {
             this.AccelerationX = speed;
-            PosX += this.AccelerationX;
+            this.PosX += this.AccelerationX;
             this.AccelerationX = this.AccelerationX / 8 * 5;
-            if (PosX + Width > MonitorWidth)
+            if (this.PosX + this.Width > this.MonitorWidth)
             {
-                PosX = 0;
+                this.PosX = 0;
             }
-            else if (PosX < 0)
+            else if (this.PosX < 0)
             {
-                PosX = MonitorWidth;
+                this.PosX = this.MonitorWidth - this.Width;
             }
         }
     }

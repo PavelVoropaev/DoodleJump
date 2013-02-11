@@ -1,4 +1,4 @@
-﻿namespace doodleJump
+﻿namespace doodleJump.Entity
 {
     using System.Drawing;
 

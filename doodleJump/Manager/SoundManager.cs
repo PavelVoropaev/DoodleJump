@@ -1,4 +1,4 @@
-﻿namespace doodleJump
+﻿namespace doodleJump.Manager
 {
     using doodleJump.Properties;
 
@@ -8,19 +8,19 @@
 
         public SoundManager(bool soundOn)
         {
-            SoundOn = soundOn;
-            waveManager.LoadWave(Resources.fire, "Fire");
-            waveManager.LoadWave(Resources.step, "Step");
-            waveManager.LoadWave(Resources.GameOwer, "GameOwer");
+            this.SoundOn = soundOn;
+            this.waveManager.LoadWave(Resources.fire, "Fire");
+            this.waveManager.LoadWave(Resources.step, "Step");
+            this.waveManager.LoadWave(Resources.GameOwer, "GameOwer");
         }
 
         public bool SoundOn { get; set; }
 
         public void FireSound()
         {
-            if (SoundOn)
+            if (this.SoundOn)
             {
-                waveManager.PlayWave("Fire");
+                this.waveManager.PlayWave("Fire");
             }
         }
 
@@ -28,15 +28,15 @@
         {
             if (this.SoundOn)
             {
-                waveManager.PlayWave("Step");
+                this.waveManager.PlayWave("Step");
             }
         }
 
         public void GameOwerSound()
         {
-            if (SoundOn)
+            if (this.SoundOn)
             {
-                waveManager.PlayWave("GameOwer");
+                this.waveManager.PlayWave("GameOwer");
             }
         }
     }

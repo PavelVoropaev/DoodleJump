@@ -1,4 +1,4 @@
-﻿namespace doodleJump
+﻿namespace doodleJump.Entity
 {
     using System.Drawing;
 
@@ -8,17 +8,17 @@
     {
         public Platform()
         {
-            Image = Resources.platform;
-            Strange = 14;
-            Width = 55;
-            Height = 10;
+            this.Image = Resources.platform;
+            this.Strange = 14;
+            this.Width = 55;
+            this.Height = 10;
         }
 
         public int Strange { get; set; }
 
         public override void Draw(Graphics canvas)
         {
-            canvas.DrawImage(Image, PosX, MonitorHeight - PosY, Width, Height);
+            canvas.DrawImage(this.Image, this.PosX, this.MonitorHeight - this.PosY, this.Width, this.Height);
         }
     }
 }
