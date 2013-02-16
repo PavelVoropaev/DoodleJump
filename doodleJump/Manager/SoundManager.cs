@@ -12,6 +12,7 @@
             this.waveManager.LoadWave(Resources.fire, "Fire");
             this.waveManager.LoadWave(Resources.step, "Step");
             this.waveManager.LoadWave(Resources.GameOwer, "GameOwer");
+            this.waveManager.LoadWave(Resources.death, "Death");
         }
 
         public bool SoundOn { get; set; }
@@ -29,6 +30,14 @@
             if (this.SoundOn)
             {
                 this.waveManager.PlayWave("Step");
+            }
+        }
+
+        public void EnemyDeath()
+        {
+            if (this.SoundOn)
+            {
+                this.waveManager.PlayWave("Death");
             }
         }
 

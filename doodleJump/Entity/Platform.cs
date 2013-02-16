@@ -16,6 +16,14 @@
 
         public int Strange { get; set; }
 
+        public bool GoToRight { get; set; }
+
+        public bool GoToLeft { get; set; }
+
+        public int SpeedX { get; set; }
+
+        public int SpeedY { get; set; }
+
         public override void Draw(Graphics canvas)
         {
             canvas.DrawImage(this.Image, this.PosX, this.MonitorHeight - this.PosY, this.Width, this.Height);

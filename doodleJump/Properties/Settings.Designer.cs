@@ -37,7 +37,7 @@ namespace doodleJump.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("350")]
+        [global::System.Configuration.DefaultSettingValueAttribute("700")]
         public int MonitorWigth {
             get {
                 return ((int)(this["MonitorWigth"]));
@@ -49,7 +49,7 @@ namespace doodleJump.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("500")]
+        [global::System.Configuration.DefaultSettingValueAttribute("700")]
         public int MonitorHeight {
             get {
                 return ((int)(this["MonitorHeight"]));

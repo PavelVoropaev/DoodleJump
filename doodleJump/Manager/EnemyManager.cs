@@ -10,7 +10,6 @@
 
     public class EnemyManager
     {
-        private const int Speed = 1;
 
         private readonly List<Enemy> enemyList = new List<Enemy>();
 
@@ -39,11 +38,7 @@
                         bullet.PosX < enemy.PosX + enemy.Width))
                 {
                     this.enemyList.Remove(enemy);
-                    lock (((ICollection)bulletList).SyncRoot)
-                    {
-                        bulletList.Remove(bullet);
-                    }
-
+                    bulletList.Remove(bullet);
                     return true;
                 }
             }
@@ -63,36 +58,56 @@
                                             doodle.PosX + doodle.Width > enemy.PosX &&
                                             doodle.PosX < enemy.PosX + enemy.Width))
             {
-                doodle.PosY = -300;
-                doodle.PosX = -300;
+                doodle.PosY = -3000;
+                doodle.PosX = -3000;
                 return true;
             }
 
             return false;
         }
 
-        public void MooveY()
+        public void Moove()
         {
             foreach (var enemy in this.enemyList)
             {
-                enemy.PosY -= Speed;
+                if (enemy.GoToLeft)
+                {
+                    enemy.PosX -= enemy.SpeedX;
+                }
+                else if (enemy.GoToRight)
+                {
+                    enemy.PosX += enemy.SpeedX;
+                }
+
+                if (enemy.PosX + enemy.Width > enemy.MonitorWidth)
+                {
+                    enemy.GoToLeft = true;
+                    enemy.GoToRight = false;
+                }
+                else if (enemy.PosX < 0)
+                {
+                    enemy.GoToLeft = false;
+                    enemy.GoToRight = true;
+                }
+
+                enemy.PosY -= enemy.SpeedY;
                 if (enemy.PosY < 0)
                 {
                     enemy.PosY = enemy.MonitorHeight;
-                    enemy.PosX = rnd.Next(10, enemy.MonitorWidth - 70);
+                    enemy.PosX = rnd.Next(0, enemy.MonitorWidth - 30);
                 }
             }
         }
 
-        public void WindowMooveY(float speed)
+        public void WindowMooveY(float doodleSpeed)
         {
             foreach (var enemy in this.enemyList)
             {
-                enemy.PosY -= speed;
+                enemy.PosY -= doodleSpeed;
                 if (enemy.PosY < 0)
                 {
-                   enemy.PosY = enemy.MonitorHeight;
-                   enemy.PosX = rnd.Next(10, enemy.MonitorWidth - 70);
+                    enemy.PosY = enemy.MonitorHeight;
+                    enemy.PosX = rnd.Next(0, enemy.MonitorWidth - 30);
                 }
             }
         }
@@ -101,8 +116,12 @@
         {
             this.enemyList.Add(new Enemy
                               {
-                                  PosY = 700,
-                                  PosX = this.rnd.Next(10, 400)
+                                  GoToRight = rnd.Next(1, 6) % 3 == 0,
+                                  GoToLeft = rnd.Next(1, 6) % 3 == 0,
+                                  SpeedX = rnd.Next(1, 3),
+                                  SpeedY = rnd.Next(1, 3),
+                                  PosY = Properties.Settings.Default.MonitorHeight,
+                                  PosX = rnd.Next(10, Properties.Settings.Default.MonitorWigth - 30)
                               });
         }
 
@@ -115,7 +134,7 @@
             var disposeCancel = true;
             foreach (var platform in this.enemyList)
             {
-                platform.PosY += 10;
+                platform.PosY += 20;
                 if (platform.PosY < platform.MonitorHeight)
                 {
                     disposeCancel = false;

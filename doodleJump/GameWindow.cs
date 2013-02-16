@@ -42,12 +42,34 @@
         public GameWindow()
         {
             InitializeComponent();
+
+            // Позиционирование элементов на экране
             soundManager = new SoundManager(SoundCheck.Checked);
+            Settings.Default.MonitorHeight = SystemInformation.PrimaryMonitorSize.Height;
+            Settings.Default.MonitorWigth = SystemInformation.PrimaryMonitorSize.Width;
+
+            this.SoundCheck.Location = new Point(0, Settings.Default.MonitorHeight - SoundCheck.Height);
+
+            this.ExitButton.Location = new Point(Settings.Default.MonitorWigth - ExitButton.Width, 0);
+
+            this.ScoreLabel.Location = new Point(
+                Settings.Default.MonitorWigth - ScoreLabel.Width * 2,
+                Settings.Default.MonitorHeight - ScoreLabel.Height);
+
+            this.GameControlPanel.Location = new Point(
+                Settings.Default.MonitorWigth / 2 - GameControlPanel.Width / 2,
+                Settings.Default.MonitorHeight / 2 - GameControlPanel.Height / 2);
         }
 
         private void NewGameButtonClick(object sender, EventArgs e)
         {
-            NewGame();
+            this.score = 0;
+            this.myDoodle = new Doodle();
+            this.platformManager = new PlatformManager();
+            this.bulletManager = new BulletManager();
+            this.enemyManager = new EnemyManager();
+            this.GameControlPanel.Visible = false;
+            this.MainTimer.Start();
         }
 
         private void GameWindowPaint(object sender, PaintEventArgs e)
@@ -65,7 +87,7 @@
         private void TimerTick(object sender, EventArgs e)
         {
             time++;
-            ScoreDisplay.Text = score.ToString();
+            ScoreLabel.Text = "Счёт: " + score.ToString();
 
             if (pressedFire && time % 4 == 0)
             {
@@ -73,7 +95,12 @@
                 soundManager.FireSound();
             }
 
-            enemyManager.KillEnemy(bulletManager.BulletList);
+            if (enemyManager.KillEnemy(bulletManager.BulletList))
+            {
+                soundManager.EnemyDeath();
+                score += 50;
+            }
+
             enemyManager.KillDoodle(myDoodle);
 
             int strenge;
@@ -82,7 +109,7 @@
                 myDoodle.Jamp(strenge);
                 soundManager.JumpSound();
             }
-            
+
             if (MouseControl.Checked)
             {
                 RefreshMousePosition(mouseX);
@@ -98,7 +125,8 @@
             }
 
             bulletManager.MooveY();
-            enemyManager.MooveY();
+            enemyManager.Moove();
+            platformManager.Moove();
 
             myDoodle.AccelerationY--;
             if (myDoodle.PosY > myDoodle.MonitorHeight / 2 && myDoodle.AccelerationY > 0)
@@ -201,21 +229,6 @@
             soundManager.SoundOn = !soundManager.SoundOn;
         }
 
-        private void NewGame()
-        {
-            score = 0;
-            myDoodle = new Doodle();
-            platformManager = new PlatformManager();
-            bulletManager = new BulletManager();
-            enemyManager = new EnemyManager();
-            NewGameButton.Visible = false;
-            Record.Visible = false;
-            congratulationText.Visible = false;
-            MouseControl.Visible = false;
-            KeyControl.Visible = false;
-            MainTimer.Start();
-        }
-
         private bool gameOverMusicPlaying;
 
         private void GameOver()
@@ -230,16 +243,13 @@
             if (platformManager.HidePlatformsCompleted())
             {
                 this.gameOverMusicPlaying = false;
-                congratulationText.Text = "Счёт:" + score +
+                Record.Text = "Счёт:" + score +
                                 "\n Предыдущий рекорд:" + Settings.Default.BestScore;
                 NewGameButton.Text = "Начать с начала";
-                NewGameButton.Visible = true;
-                congratulationText.Visible = true;
-                MouseControl.Visible = true;
-                KeyControl.Visible = true;
+                GameControlPanel.Visible = true;
                 if (score > Settings.Default.BestScore)
                 {
-                    congratulationText.Text = "\n Новый рекорд!" + score +
+                    Record.Text = "\n Новый рекорд!" + score +
                                "\n Предыдущий рекорд:" + Settings.Default.BestScore;
                     Settings.Default.BestScore = score;
                     Settings.Default.Save();
@@ -247,6 +257,11 @@
 
                 MainTimer.Stop();
             }
+        }
+
+        private void ExitClick(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }

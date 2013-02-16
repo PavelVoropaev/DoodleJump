@@ -10,8 +10,8 @@ namespace doodleJump.Entity
         {
             this.Width = 50;
             this.Height = 90;
-            this.PosY = 300;
-            this.PosX = 50;
+            this.PosY = this.MonitorHeight / 2;
+            this.PosX = this.MonitorWidth / 2;
             this.AccelerationY = -2;
             this.Image = Resources.doodle;
         }

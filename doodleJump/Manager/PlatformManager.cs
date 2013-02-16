@@ -17,14 +17,20 @@
         public PlatformManager()
         {
             this.platformList = new List<Platform>();
-
-            for (var i = 1; i < 11; i++)
+            int tmpPosY = 0;
+            while (tmpPosY < Settings.Default.MonitorHeight)
             {
                 this.platformList.Add(new Platform
-                                     {
-                                         PosY = 50 * i,
-                                         PosX = rnd.Next(10, Settings.Default.MonitorWigth - 70)
-                                     });
+                {
+                    PosY = tmpPosY,
+                    PosX = rnd.Next(10, Settings.Default.MonitorWigth - 70),
+                    GoToRight = rnd.Next(1, 15) % 5 == 0,
+                    GoToLeft = rnd.Next(1, 15) % 5 == 0,
+                    SpeedX = rnd.Next(1, 3),
+                    SpeedY = rnd.Next(1, 3),
+                });
+
+                tmpPosY += 20;
             }
         }
 
@@ -47,7 +53,7 @@
             foreach (var platform in this.platformList.Where(platform =>
                 doodle.AccelerationY < 0 &&
                 Math.Abs(doodle.PosY - doodle.Height - platform.PosY + platform.Height / 2) < platform.Height &&
-                doodle.PosX + doodle.Width > platform.PosX &&
+                doodle.PosX + doodle.Width + doodle.AccelerationX  > platform.PosX &&
                 doodle.PosX < platform.PosX + platform.Width))
             {
                 strenge = platform.Strange;
@@ -57,6 +63,33 @@
             strenge = 0;
             return false;
         }
+
+        public void Moove()
+        {
+            foreach (var platform in this.platformList)
+            {
+                if (platform.GoToLeft)
+                {
+                    platform.PosX -= platform.SpeedX;
+                }
+                else if (platform.GoToRight)
+                {
+                    platform.PosX += platform.SpeedX;
+                }
+
+                if (platform.PosX + platform.Width > platform.MonitorWidth)
+                {
+                    platform.GoToLeft = true;
+                    platform.GoToRight = false;
+                }
+                else if (platform.PosX < 0)
+                {
+                    platform.GoToLeft = false;
+                    platform.GoToRight = true;
+                }
+            }
+        }
+
 
         public void WindowMooveY(float speed)
         {
@@ -71,12 +104,12 @@
                     if (rnd.Next(0, 20) == 6)
                     {
                         platform.Image = platform.Image = Resources.GreenPlatform;
-                        platform.Strange = 25;
+                        platform.Strange = 20;
                     }
                     else if (rnd.Next(0, 60) == 12)
                     {
                         platform.Image = platform.Image = Resources.RedPlatform;
-                        platform.Strange = 50;
+                        platform.Strange = 30;
                     }
                     else
                     {
@@ -96,7 +129,7 @@
             var disposeCancel = true;
             foreach (var platform in this.platformList)
             {
-                platform.PosY += 10;
+                platform.PosY += 20;
                 if (platform.PosY < platform.MonitorHeight)
                 {
                     disposeCancel = false;

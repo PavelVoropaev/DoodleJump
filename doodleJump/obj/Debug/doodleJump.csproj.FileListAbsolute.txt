@@ -18,3 +18,4 @@ C:\Users\Alter\Documents\Visual Studio 2012\Projects\doodleJump\doodleJump\bin\D
 C:\Users\Alter\Documents\Visual Studio 2012\Projects\doodleJump\doodleJump\bin\Debug\System.Drawing.dll
 C:\Users\Alter\Documents\Visual Studio 2012\Projects\doodleJump\doodleJump\bin\Debug\System.Windows.Forms.dll
 C:\Users\Alter\Documents\Visual Studio 2012\Projects\doodleJump\doodleJump\obj\Debug\DoodleJump.csprojResolveAssemblyReference.cache
+C:\Users\Alter\Documents\Visual Studio 2012\Projects\doodleJump\doodleJump\obj\Debug\doodleJump.TrustInfo.xml
