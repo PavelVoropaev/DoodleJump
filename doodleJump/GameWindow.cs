@@ -23,6 +23,8 @@
 
         private PlatformManager platformManager;
 
+        private BonusManager bonusManager;
+
         private BulletManager bulletManager;
 
         private EnemyManager enemyManager;
@@ -66,6 +68,7 @@
             this.score = 0;
             this.myDoodle = new Doodle();
             this.platformManager = new PlatformManager();
+            this.bonusManager = new BonusManager();
             this.bulletManager = new BulletManager();
             this.enemyManager = new EnemyManager();
             this.GameControlPanel.Visible = false;
@@ -78,9 +81,10 @@
             {
                 canvas = e.Graphics;
                 myDoodle.Draw(canvas);
-                platformManager.DrawPlatforms(canvas);
-                bulletManager.DrawBullets(canvas);
-                enemyManager.DrawEnemy(canvas);
+                platformManager.Draw(canvas);
+                bonusManager.Draw(canvas);
+                bulletManager.Draw(canvas);
+                enemyManager.Draw(canvas);
             }
         }
 
@@ -89,7 +93,7 @@
             time++;
             ScoreLabel.Text = "Счёт: " + score.ToString();
 
-            if (pressedFire && time % 4 == 0)
+            if (pressedFire && time % 5 == 0)
             {
                 bulletManager.Fire(myDoodle);
                 soundManager.FireSound();
@@ -103,9 +107,18 @@
 
             enemyManager.KillDoodle(myDoodle);
 
+            bonusManager.IsTakenBonus(myDoodle);
+
+            bonusManager.TimeRefresh();
+
             int strenge;
             if (platformManager.StendToPlatfotm(myDoodle, out strenge))
             {
+                if (bonusManager.DoobleJumpActive())
+                {
+                    strenge *= 2;
+                }
+
                 myDoodle.Jamp(strenge);
                 soundManager.JumpSound();
             }
@@ -133,6 +146,7 @@
             {
                 platformManager.WindowMooveY(myDoodle.AccelerationY);
                 enemyManager.WindowMooveY(myDoodle.AccelerationY);
+                bonusManager.WindowMooveY(myDoodle.AccelerationY);
                 score++;
             }
             else
@@ -145,9 +159,14 @@
                 GameOver();
             }
 
-            if (time % 25 == 0)
+            if (time % 40 == 0)
             {
-                enemyManager.Add(time);
+                enemyManager.Add();
+            }
+
+            if (time % 100 == 0)
+            {
+                bonusManager.Add();
             }
 
             Invalidate();
@@ -240,6 +259,7 @@
             }
 
             enemyManager.HideEnemy();
+            bonusManager.HideBonus();
             if (platformManager.HidePlatformsCompleted())
             {
                 this.gameOverMusicPlaying = false;

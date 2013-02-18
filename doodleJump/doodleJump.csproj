@@ -9,11 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>doodleJump</RootNamespace>
     <AssemblyName>doodleJump</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <PublishUrl>C:\Users\Alter\Documents\Visual Studio 2012\Projects\doodleJump\DoodleJumpRunner\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -25,7 +24,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>7</ApplicationRevision>
+    <ApplicationRevision>10</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -51,6 +50,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <DebugSymbols>true</DebugSymbols>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>485E9C26884A6AE0BFA7D41D0982CBAAC9024753</ManifestCertificateThumbprint>
@@ -75,14 +77,18 @@
     <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
   <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SharpDX">
-      <HintPath>..\packages\SharpDX.2.4.2\lib\net40\SharpDX.dll</HintPath>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+    <Reference Include="SharpDX, Version=2.4.2.0, Culture=neutral, PublicKeyToken=627a3d6d1956f55a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SharpDX.2.4.2\lib\net20\SharpDX.dll</HintPath>
     </Reference>
-    <Reference Include="SharpDX.XAudio2">
-      <HintPath>..\packages\SharpDX.XAudio2.2.4.2\lib\net40\SharpDX.XAudio2.dll</HintPath>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+    <Reference Include="SharpDX.XAudio2, Version=2.4.2.0, Culture=neutral, PublicKeyToken=627a3d6d1956f55a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SharpDX.XAudio2.2.4.2\lib\net20\SharpDX.XAudio2.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Private>True</Private>
@@ -102,8 +108,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\Bonus.cs" />
     <Compile Include="Entity\Doodle.cs" />
     <Compile Include="Entity\Bullet.cs" />
+    <Compile Include="Manager\BonusManager.cs" />
     <Compile Include="Manager\BulletManager.cs" />
     <Compile Include="Manager\EnemyManager.cs" />
     <Compile Include="GameWindow.cs">
@@ -146,15 +154,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
-      <Install>false</Install>
+      <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
@@ -169,25 +172,12 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Resources\1202542875_0.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\cedd7cae2a.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\space_marine_bday_lineart_alt_by_disarrayart-d4d55iw.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\BackGround.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\space_marine_bday_lineart_alt_by_disarrayart-d4d55iw2.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\doodle.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\platform.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\3.jpg" />
@@ -224,6 +214,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
+    <None Include="Resources\doubleJump.png" />
+    <None Include="Resources\Bullet.png" />
     <None Include="Resources\death.wav" />
   </ItemGroup>
   <ItemGroup>

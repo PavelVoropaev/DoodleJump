@@ -1,7 +1,6 @@
 ﻿namespace doodleJump.Manager
 {
     using System;
-    using System.Collections;
     using System.Collections.Generic;
     using System.Drawing;
     using System.Linq;
@@ -10,12 +9,11 @@
 
     public class EnemyManager
     {
-
         private readonly List<Enemy> enemyList = new List<Enemy>();
 
         private readonly Random rnd = new Random();
 
-        public void DrawEnemy(Graphics canvas)
+        public void Draw(Graphics canvas)
         {
             foreach (var platform in this.enemyList)
             {
@@ -112,7 +110,7 @@
             }
         }
 
-        public void Add(int seed)
+        public void Add()
         {
             this.enemyList.Add(new Enemy
                               {
@@ -128,20 +126,12 @@
         /// <summary>
         /// Убирает планформы с экрана.
         /// </summary>
-        /// <returns>Убрана ли последняя платформа</returns>
-        public bool HideEnemy()
+        public void HideEnemy()
         {
-            var disposeCancel = true;
             foreach (var platform in this.enemyList)
             {
                 platform.PosY += 20;
-                if (platform.PosY < platform.MonitorHeight)
-                {
-                    disposeCancel = false;
-                }
             }
-
-            return disposeCancel;
         }
     }
 }

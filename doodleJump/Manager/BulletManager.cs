@@ -8,7 +8,6 @@
 
     public class BulletManager
     {
-
         public readonly List<Bullet> BulletList = new List<Bullet>();
 
         private const int BulletSpeed = 15;
@@ -22,7 +21,7 @@
                                });
         }
 
-        public void DrawBullets(Graphics canvas)
+        public void Draw(Graphics canvas)
         {
             foreach (var platform in this.BulletList)
             {

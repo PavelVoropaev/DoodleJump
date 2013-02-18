@@ -30,11 +30,11 @@
                     SpeedY = rnd.Next(1, 3),
                 });
 
-                tmpPosY += 20;
+                tmpPosY += 15;
             }
         }
 
-        public void DrawPlatforms(Graphics canvas)
+        public void Draw(Graphics canvas)
         {
             foreach (var platform in this.platformList)
             {

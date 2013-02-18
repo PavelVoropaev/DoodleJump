@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="doodleJump.exe" version="1.0.0.7" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="doodleJump.exe" version="1.0.0.8" publicKeyToken="5bd3cee893237376" language="neutral" processorArchitecture="msil" type="win32" />
   <description asmv2:iconFile="favicon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -49,20 +49,20 @@
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>/RoDo/8DRSybzRSWyd3mthOWT3AWj5OVIoPOOvUjnDI=</dsig:DigestValue>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>Vw6wbJ08JK/MYR3iG6Ul2+GoklI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency optional="true">
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SharpDX.dll" size="513536" group="Dlls">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SharpDX.dll" size="510976" group="Dlls">
       <assemblyIdentity name="SharpDX" version="2.4.2.0" publicKeyToken="627A3D6D1956F55A" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>IAfiP2NkLSmEfZMgIQ/kS/U0woaHtssks7cI0nbh5Dc=</dsig:DigestValue>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>LCDG85OnubBsqK23IChWuHu+Ng4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -73,18 +73,18 @@
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>EPYSlSG0pPjax/FBiLB0VG3xgrHTG7wQ7lUXq7s1jfM=</dsig:DigestValue>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>omx8J+WGamQOBKyfcrjaY+N12ag=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="doodleJump.exe.config" size="1140">
+  <file name="doodleJump.exe.config" size="1155">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>C5xid1PwiEuCIDN2AGrun+dF5uGeDCyL4LbsbY+qe10=</dsig:DigestValue>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>5IaJ5C4Ds4GYAdknvgWqvv9BezY=</dsig:DigestValue>
     </hash>
   </file>
   <file name="favicon.ico" size="370070">
@@ -92,8 +92,8 @@
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>IBzAOHAV7QadcLP3Ccu9cE/wLHyqDZVZVX1lgz0O7n8=</dsig:DigestValue>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>DTMvGo9M5ddG9m4OfFw5sAc7CwY=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
@@ -108,4 +108,4 @@
       <!--<supportedOS Id="{4a2f28e3-53b9-4441-ba9c-d69d4a4a6e38}"></supportedOS>-->
     </application>
   </compatibility>
-</asmv1:assembly>
+<publisherIdentity name="CN=ALTER-PC\Alter" issuerKeyHash="9491ca201236f73cb60cfd7ce174a876b82b0656" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>gMF8Ch2L5xqyzTXETHU571NtgbrD4yvMm0f/c4YqGh8=</DigestValue></Reference></SignedInfo><SignatureValue>JElfy6q6ZME72jJYEAglEN2sIWB5PbNW2bCAo5+VaoHfkFW48SZcsfIyzlYLGdr6SIx2oNmXRww+Rbzb+xvkE+mAnC24YVoFmX07oIIiP1hUwhZ7lrLydPQrvTW1uzqw9/iWFNIb0uobVHqejH08C6xlDVJdrmW+yaD3TxfOnn0=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>sMcPxOtsh9w3A8naZ5q07R/e+FPsttZQeJUX97HZvNokDRkpBUrFVvYYIWY+/vPmBkqbjZ4nxoy49yADoXopMI5BrVzSV4H/yLP3U/exmIErSWZJ/4tgjFYOEQxq+qBrA/mK/EAeyGWVVvk0o218MYRkjcUr4pRu83eAag/M/ds=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="1f1a2a8673ff479bcc2be3c3ba816d53ef39754cc435cdb21ae78b1d0a7cc180" Description="" Url=""><as:assemblyIdentity name="doodleJump.exe" version="1.0.0.8" publicKeyToken="5bd3cee893237376" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=ALTER-PC\Alter</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>QGvSB/bg9qWMjZnzTVL5etmCgqAZPlrj+KVSVYXYZ5M=</DigestValue></Reference></SignedInfo><SignatureValue>W2/q3NuMGXG6Ltf4/06Mb8I7AwnLxjeHCbTLs/FB8g22vLlWl+xaediZRst4MI56EM6lqUL0GwZNzKmJDABv1Sct0vZe04RrK5n7bnsVj5XNuGLEZ/7zVUNq4lY9GlQeP764qjT4RUpunzHppgzQHbSOe6/ldZ9P6/W8gpcCwnw=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>sMcPxOtsh9w3A8naZ5q07R/e+FPsttZQeJUX97HZvNokDRkpBUrFVvYYIWY+/vPmBkqbjZ4nxoy49yADoXopMI5BrVzSV4H/yLP3U/exmIErSWZJ/4tgjFYOEQxq+qBrA/mK/EAeyGWVVvk0o218MYRkjcUr4pRu83eAag/M/ds=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB0TCCATqgAwIBAgIQHkCD4V4ebplI6Ach6j13eDANBgkqhkiG9w0BAQsFADAnMSUwIwYDVQQDHhwAQQBMAFQARQBSAC0AUABDAFwAQQBsAHQAZQByMB4XDTEzMDEyMzIwMTMxOVoXDTE0MDEyNDAyMTMxOVowJzElMCMGA1UEAx4cAEEATABUAEUAUgAtAFAAQwBcAEEAbAB0AGUAcjCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAsMcPxOtsh9w3A8naZ5q07R/e+FPsttZQeJUX97HZvNokDRkpBUrFVvYYIWY+/vPmBkqbjZ4nxoy49yADoXopMI5BrVzSV4H/yLP3U/exmIErSWZJ/4tgjFYOEQxq+qBrA/mK/EAeyGWVVvk0o218MYRkjcUr4pRu83eAag/M/dsCAwEAATANBgkqhkiG9w0BAQsFAAOBgQAZ1rD7pEQRIrArp6MPiALR8g1dcgswsJ9c6OYDWS/qzm+GrdHY7H7qVGEDvFwFMPX4amf5rP7mXbsyHY/E18iz4UjsVwhzuMpoFMB+ccaGrdA1l3BLDWYkn1WxOLCUVLPcSyEt4djkyjcZyLELrUOY972zEOBN6mEAkG9NhYAgfA==</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

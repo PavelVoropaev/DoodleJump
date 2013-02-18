@@ -43,7 +43,7 @@
             // 
             // MainTimer
             // 
-            this.MainTimer.Interval = 35;
+            this.MainTimer.Interval = 40;
             this.MainTimer.Tick += new System.EventHandler(this.TimerTick);
             // 
             // ScoreLabel
@@ -61,13 +61,14 @@
             // NewGameButton
             // 
             this.NewGameButton.BackColor = System.Drawing.Color.Transparent;
+            this.NewGameButton.CausesValidation = false;
             this.NewGameButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.NewGameButton.Font = new System.Drawing.Font("Mistral", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.NewGameButton.ForeColor = System.Drawing.Color.DarkSlateBlue;
             this.NewGameButton.Location = new System.Drawing.Point(93, 19);
             this.NewGameButton.Name = "NewGameButton";
             this.NewGameButton.Size = new System.Drawing.Size(168, 121);
-            this.NewGameButton.TabIndex = 0;
+            this.NewGameButton.TabIndex = 999;
             this.NewGameButton.Text = "Новая игра";
             this.NewGameButton.UseVisualStyleBackColor = false;
             this.NewGameButton.Click += new System.EventHandler(this.NewGameButtonClick);
