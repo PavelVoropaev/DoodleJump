@@ -43,18 +43,18 @@
             // 
             // MainTimer
             // 
-            this.MainTimer.Interval = 40;
+            this.MainTimer.Interval = 35;
             this.MainTimer.Tick += new System.EventHandler(this.TimerTick);
             // 
             // ScoreLabel
             // 
             this.ScoreLabel.AutoSize = true;
             this.ScoreLabel.BackColor = System.Drawing.Color.Transparent;
-            this.ScoreLabel.Font = new System.Drawing.Font("Mistral", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ScoreLabel.Font = new System.Drawing.Font("Mistral", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ScoreLabel.ForeColor = System.Drawing.SystemColors.MenuBar;
-            this.ScoreLabel.Location = new System.Drawing.Point(638, 461);
+            this.ScoreLabel.Location = new System.Drawing.Point(583, 444);
             this.ScoreLabel.Name = "ScoreLabel";
-            this.ScoreLabel.Size = new System.Drawing.Size(44, 23);
+            this.ScoreLabel.Size = new System.Drawing.Size(87, 48);
             this.ScoreLabel.TabIndex = 1;
             this.ScoreLabel.Text = "Счёт";
             // 
@@ -105,6 +105,7 @@
             this.SoundCheck.TabIndex = 100;
             this.SoundCheck.TabStop = false;
             this.SoundCheck.UseVisualStyleBackColor = false;
+            this.SoundCheck.Visible = false;
             this.SoundCheck.CheckedChanged += new System.EventHandler(this.SoundCheckChangedEvent);
             // 
             // MouseControl

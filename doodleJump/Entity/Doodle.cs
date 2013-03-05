@@ -1,7 +1,5 @@
 namespace doodleJump.Entity
 {
-    using System.Drawing;
-
     using doodleJump.Properties;
 
     public class Doodle : PositibleObject
@@ -10,8 +8,8 @@ namespace doodleJump.Entity
         {
             this.Width = 50;
             this.Height = 90;
-            this.PosY = this.MonitorHeight / 2;
-            this.PosX = this.MonitorWidth / 2;
+            this.PosY = Settings.Default.MonitorHeight / 2;
+            this.PosX = Settings.Default.MonitorWigth / 2;
             this.AccelerationY = -2;
             this.Image = Resources.doodle;
         }
@@ -20,23 +18,18 @@ namespace doodleJump.Entity
 
         public float AccelerationX { get; set; }
 
-        public override void Draw(Graphics canvas)
-        {
-            canvas.DrawImage(this.Image, this.PosX, this.MonitorHeight - this.PosY, this.Width, this.Height);
-        }
-
         /// <summary>
         /// Прыжок
         /// </summary>
         /// <param name="strange">Сила прыжка</param>
-        public void Jamp(int strange)
+        public void Jamp(float strange)
         {
             this.AccelerationY = strange;
         }
 
         public void MooveY()
         {
-            this.PosY += this.AccelerationY;
+            this.PosY -= this.AccelerationY;
         }
 
         public void MooveX(int speed)
@@ -44,13 +37,13 @@ namespace doodleJump.Entity
             this.AccelerationX = speed;
             this.PosX += this.AccelerationX;
             this.AccelerationX = this.AccelerationX / 8 * 5;
-            if (this.PosX + this.Width > this.MonitorWidth)
+            if (this.PosX + this.Width > Settings.Default.MonitorWigth)
             {
                 this.PosX = 0;
             }
             else if (this.PosX < 0)
             {
-                this.PosX = this.MonitorWidth - this.Width;
+                this.PosX = Settings.Default.MonitorWigth - this.Width;
             }
         }
     }

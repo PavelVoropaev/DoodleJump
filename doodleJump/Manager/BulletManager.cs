@@ -31,20 +31,14 @@
 
         public void MooveY()
         {
-            try
+            foreach (var bullet in this.BulletList)
             {
-                foreach (var bullet in this.BulletList)
+                bullet.PosY -= BulletSpeed;
+                if (bullet.PosY < 0)
                 {
-                    bullet.PosY += BulletSpeed;
-                    if (bullet.PosY > bullet.MonitorHeight + 50)
-                    {
-                        this.BulletList.Remove(bullet);
-                    }
+                    this.BulletList.Remove(bullet);
+                    break;
                 }
-            }
-            catch (InvalidOperationException)
-            {
-                // В другом потоке был удалён объект из листа, так что падаем сюда каждый раз когда убираем пулю с экрана.
             }
         }
     }

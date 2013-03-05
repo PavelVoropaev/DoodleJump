@@ -82,14 +82,6 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SharpDX, Version=2.4.2.0, Culture=neutral, PublicKeyToken=627a3d6d1956f55a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\SharpDX.2.4.2\lib\net20\SharpDX.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.XAudio2, Version=2.4.2.0, Culture=neutral, PublicKeyToken=627a3d6d1956f55a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\SharpDX.XAudio2.2.4.2\lib\net20\SharpDX.XAudio2.dll</HintPath>
-    </Reference>
     <Reference Include="System">
       <Private>True</Private>
       <EmbedInteropTypes>False</EmbedInteropTypes>
@@ -131,7 +123,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Manager\SoundManager.cs" />
-    <Compile Include="Manager\SoundWaveManager.cs" />
     <Compile Include="Entity\Enemy.cs" />
     <EmbeddedResource Include="GameWindow.resx">
       <DependentUpon>GameWindow.cs</DependentUpon>
@@ -201,9 +192,6 @@
     <None Include="Resources\RedPlatform.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Bullet.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\gun2.wav" />
   </ItemGroup>
   <ItemGroup>
@@ -218,26 +206,7 @@
     <None Include="Resources\Bullet.png" />
     <None Include="Resources\death.wav" />
   </ItemGroup>
-  <ItemGroup>
-    <PublishFile Include="SharpDX">
-      <Visible>False</Visible>
-      <Group>Dlls</Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>Assembly</FileType>
-    </PublishFile>
-    <PublishFile Include="SharpDX.XAudio2">
-      <Visible>False</Visible>
-      <Group>Dlls</Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>Assembly</FileType>
-    </PublishFile>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

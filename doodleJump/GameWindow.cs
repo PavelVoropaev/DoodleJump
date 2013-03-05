@@ -111,12 +111,12 @@
 
             bonusManager.TimeRefresh();
 
-            int strenge;
+            float strenge;
             if (platformManager.StendToPlatfotm(myDoodle, out strenge))
             {
                 if (bonusManager.DoobleJumpActive())
                 {
-                    strenge *= 2;
+                    strenge *= 1.5F;
                 }
 
                 myDoodle.Jamp(strenge);
@@ -142,7 +142,7 @@
             platformManager.Moove();
 
             myDoodle.AccelerationY--;
-            if (myDoodle.PosY > myDoodle.MonitorHeight / 2 && myDoodle.AccelerationY > 0)
+            if (myDoodle.PosY < Settings.Default.MonitorHeight / 2 && myDoodle.AccelerationY > 0)
             {
                 platformManager.WindowMooveY(myDoodle.AccelerationY);
                 enemyManager.WindowMooveY(myDoodle.AccelerationY);
@@ -154,7 +154,7 @@
                 myDoodle.MooveY();
             }
 
-            if (myDoodle.PosY < 0)
+            if (myDoodle.PosY > Settings.Default.MonitorWigth)
             {
                 GameOver();
             }

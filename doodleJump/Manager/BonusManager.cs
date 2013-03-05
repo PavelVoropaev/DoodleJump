@@ -5,6 +5,7 @@
     using System.Drawing;
     using System.Linq;
     using doodleJump.Entity;
+    using doodleJump.Properties;
 
     public class BonusManager
     {
@@ -35,11 +36,7 @@
         /// <returns>Взял ли дудл бонус?</returns>
         public bool IsTakenBonus(Doodle doodle)
         {
-            foreach (var bonus in this.bonusList.Where(platform =>
-                doodle.AccelerationY < 0 &&
-                Math.Abs(doodle.PosY - doodle.Height - platform.PosY + platform.Height / 2) < platform.Height &&
-                doodle.PosX + doodle.Width + doodle.AccelerationX > platform.PosX &&
-                doodle.PosX < platform.PosX + platform.Width))
+            foreach (var bonus in this.bonusList.Where(bonus => !Rectangle.Intersect(doodle.Rectangle, bonus.Rectangle).IsEmpty))
             {
                 activeBonusList.Add(bonus, 200);
                 bonusList.Remove(bonus);
@@ -53,11 +50,11 @@
         {
             foreach (var bonus in this.bonusList)
             {
-                bonus.PosY -= speed;
-                if (bonus.PosY < 0)
+                bonus.PosY += speed;
+                if (bonus.PosY > Settings.Default.MonitorHeight)
                 {
-                    bonus.PosY = bonus.MonitorHeight;
-                    bonus.PosX = rnd.Next(10, bonus.MonitorWidth - 70);
+                    bonus.PosY = 0;
+                    bonus.PosX = rnd.Next(10, Settings.Default.MonitorWigth - 70);
                 }
             }
         }
@@ -69,7 +66,7 @@
         {
             foreach (var platform in this.bonusList)
             {
-                platform.PosY += 20;
+                platform.PosY -= 20;
             }
         }
 
@@ -78,21 +75,26 @@
             return this.activeBonusList.Any(bonuse => bonuse.Key.DoobleJump);
         }
 
+        /// <summary>
+        /// Удалить бонусы из активных если их действие закончилось
+        /// </summary>
         public void TimeRefresh()
         {
             try
             {
                 foreach (var bonusTime in activeBonusList)
                 {
-                    activeBonusList[bonusTime.Key] = bonusTime.Value + 1;
+                    activeBonusList[bonusTime.Key] = bonusTime.Value - 1;
                     if (bonusTime.Value < 0)
                     {
                         activeBonusList.Remove(bonusTime.Key);
+                        break;
                     }
                 }
             }
             catch 
             {
+                
             }
         }
 
@@ -100,9 +102,8 @@
         {
             this.bonusList.Add(new Bonus
             {
-                DoobleJump = rnd.Next(1, 6) % 3 == 0,
-                Immortality = rnd.Next(1, 6) % 3 == 0,
-                PosY = Properties.Settings.Default.MonitorHeight,
+                DoobleJump = true,
+                PosY = 0,
                 PosX = rnd.Next(10, Properties.Settings.Default.MonitorWigth - 30)
             });
         }

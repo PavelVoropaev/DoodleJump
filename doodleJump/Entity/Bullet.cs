@@ -12,15 +12,10 @@
             this.Width = 5;
             this.Height = 23;
         }
-        
-        public override void Draw(Graphics canvas)
-        {
-            canvas.DrawImage(this.Image, this.PosX, this.MonitorHeight - this.PosY, this.Width, this.Height);
-        }
 
         public void MooveY()
         {
-            this.PosY += 30;
+            this.PosY -= 30;
         }
     }
 }

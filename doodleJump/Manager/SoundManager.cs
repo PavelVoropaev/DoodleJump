@@ -4,15 +4,15 @@
 
     public class SoundManager
     {
-        private readonly WaveManager waveManager = new WaveManager();
+     //   private readonly WaveManager waveManager = new WaveManager();
 
         public SoundManager(bool soundOn)
         {
-            this.SoundOn = soundOn;
-            this.waveManager.LoadWave(Resources.fire, "Fire");
-            this.waveManager.LoadWave(Resources.step, "Step");
-            this.waveManager.LoadWave(Resources.GameOwer, "GameOwer");
-            this.waveManager.LoadWave(Resources.death, "Death");
+            //this.SoundOn = soundOn;
+            //this.waveManager.LoadWave(Resources.fire, "Fire");
+            //this.waveManager.LoadWave(Resources.step, "Step");
+            //this.waveManager.LoadWave(Resources.GameOwer, "GameOwer");
+            //this.waveManager.LoadWave(Resources.death, "Death");
         }
 
         public bool SoundOn { get; set; }
@@ -21,7 +21,7 @@
         {
             if (this.SoundOn)
             {
-                this.waveManager.PlayWave("Fire");
+               // this.waveManager.PlayWave("Fire");
             }
         }
 
@@ -29,7 +29,7 @@
         {
             if (this.SoundOn)
             {
-                this.waveManager.PlayWave("Step");
+              //  this.waveManager.PlayWave("Step");
             }
         }
 
@@ -37,7 +37,7 @@
         {
             if (this.SoundOn)
             {
-                this.waveManager.PlayWave("Death");
+             //   this.waveManager.PlayWave("Death");
             }
         }
 
@@ -45,7 +45,7 @@
         {
             if (this.SoundOn)
             {
-                this.waveManager.PlayWave("GameOwer");
+             //   this.waveManager.PlayWave("GameOwer");
             }
         }
     }

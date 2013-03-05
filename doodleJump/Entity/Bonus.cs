@@ -17,12 +17,5 @@
         public int Strange { get; set; }
 
         public bool DoobleJump { get; set; }
-
-        public bool Immortality { get; set; }
-
-        public override void Draw(Graphics canvas)
-        {
-            canvas.DrawImage(this.Image, this.PosX, this.MonitorHeight - this.PosY, this.Width, this.Height);
-        }
     }
 }

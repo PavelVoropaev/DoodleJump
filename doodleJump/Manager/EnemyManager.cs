@@ -6,6 +6,7 @@
     using System.Linq;
 
     using doodleJump.Entity;
+    using doodleJump.Properties;
 
     public class EnemyManager
     {
@@ -30,10 +31,7 @@
         {
             foreach (var bullet in bulletList)
             {
-                foreach (var enemy in this.enemyList.Where(enemy =>
-               Math.Abs(bullet.PosY - bullet.Height - enemy.PosY + enemy.Height / 2) < enemy.Height &&
-                        bullet.PosX + bullet.Width > enemy.PosX &&
-                        bullet.PosX < enemy.PosX + enemy.Width))
+                foreach (var enemy in this.enemyList.Where(enemy => !Rectangle.Intersect(bullet.Rectangle, enemy.Rectangle).IsEmpty))
                 {
                     this.enemyList.Remove(enemy);
                     bulletList.Remove(bullet);
@@ -51,13 +49,10 @@
         /// <returns>Были ли попадания в Дудла?</returns>
         public bool KillDoodle(Doodle doodle)
         {
-            if (this.enemyList.Any(enemy => doodle.PosY - doodle.Height < enemy.PosY &&
-                                            doodle.PosY > enemy.PosY - enemy.Height &&
-                                            doodle.PosX + doodle.Width > enemy.PosX &&
-                                            doodle.PosX < enemy.PosX + enemy.Width))
+            if (this.enemyList.Any(enemy => !Rectangle.Intersect(doodle.Rectangle, enemy.Rectangle).IsEmpty))
             {
-                doodle.PosY = -3000;
-                doodle.PosX = -3000;
+                doodle.PosY = 3000;
+                doodle.PosX = 3000;
                 return true;
             }
 
@@ -77,7 +72,7 @@
                     enemy.PosX += enemy.SpeedX;
                 }
 
-                if (enemy.PosX + enemy.Width > enemy.MonitorWidth)
+                if (enemy.PosX + enemy.Width > Settings.Default.MonitorWigth)
                 {
                     enemy.GoToLeft = true;
                     enemy.GoToRight = false;
@@ -88,11 +83,11 @@
                     enemy.GoToRight = true;
                 }
 
-                enemy.PosY -= enemy.SpeedY;
-                if (enemy.PosY < 0)
+                enemy.PosY += enemy.SpeedY;
+                if (enemy.PosY > Settings.Default.MonitorWigth)
                 {
-                    enemy.PosY = enemy.MonitorHeight;
-                    enemy.PosX = rnd.Next(0, enemy.MonitorWidth - 30);
+                    enemy.PosY = 0;
+                    enemy.PosX = rnd.Next(0, Settings.Default.MonitorWigth - 30);
                 }
             }
         }
@@ -101,11 +96,11 @@
         {
             foreach (var enemy in this.enemyList)
             {
-                enemy.PosY -= doodleSpeed;
-                if (enemy.PosY < 0)
+                enemy.PosY += doodleSpeed;
+                if (enemy.PosY > Settings.Default.MonitorWigth)
                 {
-                    enemy.PosY = enemy.MonitorHeight;
-                    enemy.PosX = rnd.Next(0, enemy.MonitorWidth - 30);
+                    enemy.PosY = 0;
+                    enemy.PosX = rnd.Next(0, Settings.Default.MonitorWigth - 30);
                 }
             }
         }
@@ -118,7 +113,7 @@
                                   GoToLeft = rnd.Next(1, 6) % 3 == 0,
                                   SpeedX = rnd.Next(1, 3),
                                   SpeedY = rnd.Next(1, 3),
-                                  PosY = Properties.Settings.Default.MonitorHeight,
+                                  PosY = 0,
                                   PosX = rnd.Next(10, Properties.Settings.Default.MonitorWigth - 30)
                               });
         }
@@ -130,7 +125,7 @@
         {
             foreach (var platform in this.enemyList)
             {
-                platform.PosY += 20;
+                platform.PosY -= 20;
             }
         }
     }

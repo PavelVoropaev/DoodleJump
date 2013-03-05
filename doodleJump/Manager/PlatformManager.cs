@@ -48,11 +48,11 @@
         /// <param name="doodle">Дудл</param>
         /// <param name="strenge">Сила толчка платформы </param>
         /// <returns>Стоит ли дудл на платформе?</returns>
-        public bool StendToPlatfotm(Doodle doodle, out int strenge)
+        public bool StendToPlatfotm(Doodle doodle, out float strenge)
         {
             foreach (var platform in this.platformList.Where(platform =>
                 doodle.AccelerationY < 0 &&
-                Math.Abs(doodle.PosY - doodle.Height - platform.PosY + platform.Height / 2) < platform.Height &&
+                Math.Abs(doodle.PosY + doodle.Height - platform.PosY - platform.Height / 2) < platform.Height &&
                 doodle.PosX + doodle.Width + doodle.AccelerationX  > platform.PosX &&
                 doodle.PosX < platform.PosX + platform.Width))
             {
@@ -66,6 +66,16 @@
 
         public void Moove()
         {
+
+            if (platformList.Any(platform => platform.PosX < 0))
+            {
+                Console.WriteLine("asd");
+            }
+            else
+            {
+                Console.WriteLine("asd");
+            }
+
             foreach (var platform in this.platformList)
             {
                 if (platform.GoToLeft)
@@ -77,7 +87,7 @@
                     platform.PosX += platform.SpeedX;
                 }
 
-                if (platform.PosX + platform.Width > platform.MonitorWidth)
+                if (platform.PosX + platform.Width > Settings.Default.MonitorWigth)
                 {
                     platform.GoToLeft = true;
                     platform.GoToRight = false;
@@ -95,11 +105,11 @@
         {
             foreach (var platform in this.platformList)
             {
-                platform.PosY -= speed;
-                if (platform.PosY < 0)
+                platform.PosY += speed;
+                if (platform.PosY > Settings.Default.MonitorHeight)
                 {
-                    platform.PosY = platform.MonitorHeight;
-                    platform.PosX = rnd.Next(10, platform.MonitorWidth - 70);
+                    platform.PosY = 0;
+                    platform.PosX = rnd.Next(10, Settings.Default.MonitorWigth - 70);
 
                     if (rnd.Next(0, 20) == 6)
                     {
@@ -129,8 +139,8 @@
             var disposeCancel = true;
             foreach (var platform in this.platformList)
             {
-                platform.PosY += 20;
-                if (platform.PosY < platform.MonitorHeight)
+                platform.PosY -= 20;
+                if (platform.PosY < 0)
                 {
                     disposeCancel = false;
                 }
