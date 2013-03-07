@@ -100,9 +100,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Manager\BaseManager.cs" />
     <Compile Include="Entity\Bonus.cs" />
     <Compile Include="Entity\Doodle.cs" />
     <Compile Include="Entity\Bullet.cs" />
+    <Compile Include="Helpers\RandomHelper.cs" />
     <Compile Include="Manager\BonusManager.cs" />
     <Compile Include="Manager\BulletManager.cs" />
     <Compile Include="Manager\EnemyManager.cs" />

@@ -2,16 +2,14 @@ namespace doodleJump.Entity
 {
     using doodleJump.Properties;
 
-    public class Doodle : PositibleObject
+    public sealed class Doodle : PositibleObject
     {
         public Doodle()
         {
             this.Width = 50;
             this.Height = 90;
-            this.PosY = Settings.Default.MonitorHeight / 2;
-            this.PosX = Settings.Default.MonitorWigth / 2;
-            this.AccelerationY = -2;
             this.Image = Resources.doodle;
+            RefreshValue();
         }
 
         public float AccelerationY { get; set; }
@@ -45,6 +43,13 @@ namespace doodleJump.Entity
             {
                 this.PosX = Settings.Default.MonitorWigth - this.Width;
             }
+        }
+
+        public override void RefreshValue()
+        {
+            this.PosY = Settings.Default.MonitorHeight / 2;
+            this.PosX = Settings.Default.MonitorWigth / 2;
+            this.AccelerationY = -2;
         }
     }
 }

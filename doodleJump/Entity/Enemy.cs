@@ -1,24 +1,27 @@
 ﻿namespace doodleJump.Entity
 {
-    using System.Drawing;
-
     using doodleJump.Properties;
 
-    public class Enemy : PositibleObject
+    public sealed class Enemy : PositibleObject
     {
         public Enemy()
         {
-            this.Image = Resources.Enemy;
-            this.Width = 25;
-            this.Height = 25;
+            Image = Resources.Enemy;
+            Width = 25;
+            Height = 25;
+            RefreshValue();
         }
-
-        public bool GoToRight { get; set; }
-
-        public bool GoToLeft { get; set; }
 
         public int SpeedX { get; set; }
 
         public int SpeedY { get; set; }
+        
+        public override void RefreshValue()
+        {
+            this.SpeedX = Rnd.Next(-3, 3);
+            this.SpeedY = Rnd.Next(1, 3);
+            this.PosY = 0;
+            this.PosX = Rnd.Next(10, Settings.Default.MonitorWigth - 30);
+        }
     }
 }

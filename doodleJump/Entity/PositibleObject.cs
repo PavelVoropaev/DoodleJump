@@ -1,11 +1,17 @@
 ﻿namespace doodleJump.Entity
 {
+    using System;
     using System.Drawing;
 
-    using doodleJump.Properties;
+    using doodleJump.Helpers;
 
     public abstract class PositibleObject
     {
+        protected PositibleObject()
+        {
+            Rnd = RandomHelper.Rnd;
+        }
+
         public int Width { get; protected set; }
 
         public int Height { get; protected set; }
@@ -22,11 +28,15 @@
             }
         }
 
+        public Random Rnd { get; set; }
+
         public Image Image { get; set; }
 
         public void Draw(Graphics canvas)
         {
             canvas.DrawImage(this.Image, Rectangle);
         }
+
+        public abstract void RefreshValue();
     }
 }

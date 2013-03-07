@@ -1,7 +1,5 @@
 ﻿namespace doodleJump.Entity
 {
-    using System.Drawing;
-
     using doodleJump.Properties;
 
     public class Bullet : PositibleObject
@@ -13,9 +11,13 @@
             this.Height = 23;
         }
 
-        public void MooveY()
+        public void Moove()
         {
             this.PosY -= 30;
+        }
+
+        public override void RefreshValue()
+        {
         }
     }
 }

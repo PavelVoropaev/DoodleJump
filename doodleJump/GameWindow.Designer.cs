@@ -106,7 +106,6 @@
             this.SoundCheck.TabStop = false;
             this.SoundCheck.UseVisualStyleBackColor = false;
             this.SoundCheck.Visible = false;
-            this.SoundCheck.CheckedChanged += new System.EventHandler(this.SoundCheckChangedEvent);
             // 
             // MouseControl
             // 
