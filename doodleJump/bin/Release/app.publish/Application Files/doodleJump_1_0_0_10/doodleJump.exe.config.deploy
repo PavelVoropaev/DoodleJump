@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<configuration>
+    <configSections>
+        <sectionGroup name="userSettings" type="System.Configuration.UserSettingsGroup, System, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+            <section name="doodleJump.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false"/>
+        </sectionGroup>
+    </configSections>
+  <startup>
+    
+  <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.0,Profile=Client"/></startup>
+    <userSettings>
+        <doodleJump.Properties.Settings>
+            <setting name="BestScore" serializeAs="String">
+                <value>0</value>
+            </setting>
+            <setting name="MonitorWigth" serializeAs="String">
+                <value>700</value>
+            </setting>
+            <setting name="MonitorHeight" serializeAs="String">
+                <value>700</value>
+            </setting>
+        </doodleJump.Properties.Settings>
+    </userSettings>
+</configuration>

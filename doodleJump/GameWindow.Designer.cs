@@ -38,12 +38,13 @@
             this.KeyControl = new System.Windows.Forms.RadioButton();
             this.GameControlPanel = new System.Windows.Forms.Panel();
             this.ExitButton = new System.Windows.Forms.Button();
+            this.DrawTimer = new System.Windows.Forms.Timer(this.components);
             this.GameControlPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainTimer
             // 
-            this.MainTimer.Interval = 35;
+            this.MainTimer.Interval = 40;
             this.MainTimer.Tick += new System.EventHandler(this.TimerTick);
             // 
             // ScoreLabel
@@ -161,6 +162,12 @@
             this.ExitButton.UseVisualStyleBackColor = false;
             this.ExitButton.Click += new System.EventHandler(this.ExitClick);
             // 
+            // DrawTimer
+            // 
+            this.DrawTimer.Enabled = true;
+            this.DrawTimer.Interval = 40;
+            this.DrawTimer.Tick += new System.EventHandler(this.DrawTick);
+            // 
             // GameWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -202,6 +209,7 @@
         private System.Windows.Forms.RadioButton KeyControl;
         private System.Windows.Forms.Panel GameControlPanel;
         private System.Windows.Forms.Button ExitButton;
+        private System.Windows.Forms.Timer DrawTimer;
     }
 }
 

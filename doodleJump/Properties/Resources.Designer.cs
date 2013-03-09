@@ -81,15 +81,6 @@ namespace doodleJump.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
-        /// </summary>
-        internal static System.IO.UnmanagedMemoryStream death {
-            get {
-                return ResourceManager.GetStream("death", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap doodle {
@@ -120,49 +111,11 @@ namespace doodleJump.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
-        /// </summary>
-        internal static System.IO.UnmanagedMemoryStream fire {
-            get {
-                return ResourceManager.GetStream("fire", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
-        /// </summary>
-        internal static System.IO.UnmanagedMemoryStream GameOwer {
-            get {
-                return ResourceManager.GetStream("GameOwer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap GreenPlatform {
             get {
                 object obj = ResourceManager.GetObject("GreenPlatform", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap musicOff {
-            get {
-                object obj = ResourceManager.GetObject("musicOff", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap musicOn {
-            get {
-                object obj = ResourceManager.GetObject("musicOn", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -188,11 +141,12 @@ namespace doodleJump.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.IO.UnmanagedMemoryStream step {
+        internal static System.Drawing.Bitmap SBonus {
             get {
-                return ResourceManager.GetStream("step", resourceCulture);
+                object obj = ResourceManager.GetObject("SBonus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

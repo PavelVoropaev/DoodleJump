@@ -87,9 +87,9 @@
             time++;
             ScoreLabel.Text = "Счёт: " + this.score;
 
-            if (pressedFire && time % 5 == 0)
+            if (pressedFire && time % 7 == 0)
             {
-                bulletManager.Fire(myDoodle);
+                bulletManager.Fire(myDoodle, bonusManager.MultiFireIsActive());
             }
 
             if (enemyManager.KillEnemy(bulletManager.List))
@@ -106,7 +106,7 @@
             float strenge;
             if (platformManager.StendToPlatfotm(myDoodle, out strenge))
             {
-                if (bonusManager.DoobleJumpActive())
+                if (bonusManager.DoobleJumpIsActive())
                 {
                     strenge *= 1.5F;
                 }
@@ -138,7 +138,6 @@
                 platformManager.WindowMooveY(myDoodle.AccelerationY);
                 enemyManager.WindowMooveY(myDoodle.AccelerationY);
                 bonusManager.WindowMooveY(myDoodle.AccelerationY);
-                bulletManager.WindowMooveY(myDoodle.AccelerationY);
                 score++;
             }
             else
@@ -160,17 +159,13 @@
             {
                 bonusManager.AddItem();
             }
-
-            Invalidate();
         }
 
         private void GameOver()
         {
-            const int HideSpeed = 40;
-            enemyManager.Hide(HideSpeed);
-            bonusManager.Hide(HideSpeed);
-            bulletManager.Hide(HideSpeed);
-            if (platformManager.Hide(HideSpeed))
+            if (platformManager.HideComplided() &
+                enemyManager.HideComplided() &
+                bonusManager.HideComplided())
             {
                 Record.Text = "Счёт:" + score +
                                 "\n Предыдущий рекорд:" + Settings.Default.BestScore;
@@ -261,6 +256,11 @@
         private void ExitClick(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void DrawTick(object sender, EventArgs e)
+        {
+            this.Invalidate();
         }
     }
 }

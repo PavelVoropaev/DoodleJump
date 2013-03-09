@@ -31,9 +31,14 @@
             return false;
         }
 
-        public bool DoobleJumpActive()
+        public bool DoobleJumpIsActive()
         {
             return this.activeBonusList.Any(bonuse => bonuse.Key.DoobleJump);
+        }
+
+        public bool MultiFireIsActive()
+        {
+            return this.activeBonusList.Any(bonuse => bonuse.Key.MultFire);
         }
 
         /// <summary>

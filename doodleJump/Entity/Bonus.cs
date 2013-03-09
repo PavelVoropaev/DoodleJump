@@ -6,20 +6,28 @@
     {
         public Bonus()
         {
-            this.Image = Resources.doubleJump;
-            this.Strange = 14;
-            this.Width = 30;
-            this.Height = 30;
+            this.Width = 35;
+            this.Height = 35;
             RefreshValue();
         }
 
-        public int Strange { get; set; }
-
         public bool DoobleJump { get; set; }
+
+        public bool MultFire { get; set; }
 
         public override void RefreshValue()
         {
-            DoobleJump = true;
+            if (Rnd.Next(2) % 2 == 0)
+            {
+                DoobleJump = true;
+                this.Image = Resources.doubleJump;
+            }
+            else
+            {
+                MultFire = true;
+                this.Image = Resources.SBonus;
+            }
+
             PosY = 0;
             PosX = Rnd.Next(10, Settings.Default.MonitorWigth - 30);
         }

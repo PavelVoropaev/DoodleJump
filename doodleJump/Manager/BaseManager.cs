@@ -18,17 +18,15 @@
 
         public void Draw(Graphics canvas)
         {
-            foreach (var platform in this.List)
-            {
-                platform.Draw(canvas);
-            }
+            List.ForEach(x => x.Draw(canvas));
         }
 
         public void WindowMooveY(float doodleSpeed)
         {
+            List.ForEach(x => x.PosY += doodleSpeed);
+
             foreach (var item in this.List)
             {
-                item.PosY += doodleSpeed;
                 if (item.PosY > Settings.Default.MonitorHeight)
                 {
                     item.RefreshValue();
@@ -39,17 +37,17 @@
         /// <summary>
         /// Убирает планформы с экрана.
         /// </summary>
-        /// <param name="speed">Скорость </param>
         /// <returns>
         /// Убрана ли последняя платформа
         /// </returns>
-        public bool Hide(int speed)
+        public bool HideComplided()
         {
+            const int HideSpeed = 40;
             var disposeCancel = true;
-            foreach (var element in this.List)
+            foreach (var item in this.List)
             {
-                element.PosY -= speed;
-                if (element.PosY > 0)
+                item.PosY -= HideSpeed;
+                if (item.PosY > 0)
                 {
                     disposeCancel = false;
                 }

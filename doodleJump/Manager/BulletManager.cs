@@ -4,28 +4,34 @@
 
     public class BulletManager : BaseManager<Bullet>
     {
-        private const int BulletSpeed = 25;
-
-        public void Fire(Doodle doodle)
+        public void Fire(Doodle doodle, bool multiFire)
         {
             this.List.Add(new Bullet
                                {
                                    PosX = doodle.PosX + doodle.Width / 2,
                                    PosY = doodle.PosY,
                                });
+            if (multiFire)
+            {
+                this.List.Add(new Bullet
+                {
+                    PosX = doodle.PosX + doodle.Width / 2 + 20,
+                    PosY = doodle.PosY,
+                    SpeedX = 3
+                });
+                this.List.Add(new Bullet
+                {
+                    PosX = doodle.PosX + doodle.Width / 2 - 20,
+                    PosY = doodle.PosY,
+                    SpeedX = -3
+                });
+            }
         }
 
         public void Moove()
         {
-            foreach (var bullet in this.List)
-            {
-                bullet.PosY -= BulletSpeed;
-                if (bullet.PosY < 0)
-                {
-                    this.List.Remove(bullet);
-                    break;
-                }
-            }
+            List.ForEach(x => x.Moove());
+            List.RemoveAll(x => x.PosY < 0);
         }
     }
 }

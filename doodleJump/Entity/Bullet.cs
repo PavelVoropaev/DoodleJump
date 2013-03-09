@@ -7,13 +7,19 @@
         public Bullet()
         {
             this.Image = Resources.Bullet;
-            this.Width = 5;
-            this.Height = 23;
+            this.Width = 10;
+            this.Height = 10;
+            this.SpeedY = 25;
         }
+
+        public int SpeedX { get; set; }
+
+        public int SpeedY { get; set; }
 
         public void Moove()
         {
-            this.PosY -= 30;
+            PosX += SpeedX;
+            PosY -= SpeedY;
         }
 
         public override void RefreshValue()
